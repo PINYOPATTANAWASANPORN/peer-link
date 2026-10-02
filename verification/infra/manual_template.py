@@ -23,6 +23,9 @@ def template():
  r['Ledger']={'Type':'AWS::DynamoDB::Table','DeletionPolicy':'Retain','UpdateReplacePolicy':'Retain','Properties':{'BillingMode':'PAY_PER_REQUEST','AttributeDefinitions':[{'AttributeName':'id','AttributeType':'S'}],'KeySchema':[{'AttributeName':'id','KeyType':'HASH'}],'SSESpecification':{'SSEEnabled':True}}}
  ssm=['ssm:UpdateInstanceInformation','ssmmessages:CreateControlChannel','ssmmessages:CreateDataChannel','ssmmessages:OpenControlChannel','ssmmessages:OpenDataChannel','ec2messages:AcknowledgeMessage','ec2messages:DeleteMessage','ec2messages:FailMessage','ec2messages:GetEndpoint','ec2messages:GetMessages','ec2messages:SendReply']
  host_policy=[allow(ssm,'*'),allow('s3:GetObjectVersion',sub('arn:${AWS::Partition}:s3:::${ArtifactBucket}/${ArtifactKey}'),Condition={'StringEquals':{'s3:VersionId':ref('ArtifactVersion')}}),{'Effect':'Deny','Action':['ssm:GetParameter*','secretsmanager:*','kms:*','sts:AssumeRole','iam:*'],'Resource':'*'}]
+ # An Allow condition is only an implicit deny for other versions. A same-account
+ # bucket policy can grant them, so explicitly reject every unapproved version.
+ host_policy.append({'Effect':'Deny','Action':'s3:GetObjectVersion','Resource':sub('arn:${AWS::Partition}:s3:::${ArtifactBucket}/${ArtifactKey}'),'Condition':{'StringNotEquals':{'s3:VersionId':ref('ArtifactVersion')}}})
  r['HostRole']={'Type':'AWS::IAM::Role','Properties':{'AssumeRolePolicyDocument':trust('ec2.amazonaws.com'),'Policies':[{'PolicyName':'OnlyApprovedWorkerAndSessionTransport','PolicyDocument':policy(host_policy)}]}}
  r['HostProfile']={'Type':'AWS::IAM::InstanceProfile','Properties':{'Roles':[ref('HostRole')]}}
  r['WorkerGroup']={'Type':'AWS::EC2::SecurityGroup','Properties':{'VpcId':ref('VpcId'),'GroupDescription':'Peer Link manual worker: no ingress, outbound TLS only','SecurityGroupEgress':[{'IpProtocol':'tcp','FromPort':443,'ToPort':443,'CidrIp':'0.0.0.0/0'}]}}
