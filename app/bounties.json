@@ -8,7 +8,7 @@
     "issue": "https://github.com/zkp2p/peer-link/issues/6",
     "logo": "/logos/monobank.png",
     "mark": "M",
-    "scope": "Adapter proposal"
+    "scope": "Adapter award"
   },
   {
     "id": 8,
@@ -19,7 +19,7 @@
     "issue": "https://github.com/zkp2p/peer-link/issues/8",
     "logo": "/logos/vietcombank.png",
     "mark": "V",
-    "scope": "Adapter proposal"
+    "scope": "Adapter award"
   },
   {
     "id": "chase",
@@ -30,7 +30,7 @@
     "issue": "https://github.com/zkp2p/peer-link/issues/73",
     "logo": "/logos/chase.jpg",
     "mark": "C",
-    "scope": "Feasibility proposal"
+    "scope": "Feasibility award"
   },
   {
     "id": "bank-of-america",
@@ -41,7 +41,7 @@
     "issue": "https://github.com/zkp2p/peer-link/issues/74",
     "logo": "/logos/bank-of-america.png",
     "mark": "B",
-    "scope": "Feasibility proposal"
+    "scope": "Feasibility award"
   },
   {
     "id": "wells-fargo",
@@ -52,6 +52,6 @@
     "issue": "https://github.com/zkp2p/peer-link/issues/75",
     "logo": "/logos/wells-fargo.png",
     "mark": "W",
-    "scope": "Feasibility proposal"
+    "scope": "Feasibility award"
   }
 ]

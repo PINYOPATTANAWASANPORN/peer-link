@@ -41,7 +41,7 @@ Community reports are revision-specific claims, not certified unique people or b
 
 Peer Link is designed for agent-assisted maintenance. Public prompts, explicit policies and machine-readable decisions make reviews inspectable. A private verifier is being built to authenticate bank evidence inside an AWS enclave, with deterministic reference checks and explicit account-owner consent.
 
-**Current status: development, not a live verification service.** No scheduled agent tasks or automatic payouts are enabled. The old unfunded round is being replaced; see the current incentive terms.
+**Current status: development, not a live verification service.** No scheduled agent tasks or automatic payouts are enabled. The targeted rewards are funded; see the current incentive terms.
 
 **Venice remains disabled:** Peer Link has not independently verified its TEE execution and end-to-end response authenticity. Bank data is not forwarded to Venice or OpenAI. The [synthetic agent evaluation](docs/verification.md#synthetic-agent-evaluation) tests the advisory review task only; success does not establish Venice model accuracy or TEE security.
 
