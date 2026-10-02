@@ -1,6 +1,6 @@
 ---
 name: review-contribution
-description: Review an OpenPlaid bank integration or report for semantic correctness, privacy and reproducibility.
+description: Review an Peer Link bank integration or report for semantic correctness, privacy and reproducibility.
 ---
 
 # Review Contribution

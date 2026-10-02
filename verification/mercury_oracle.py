@@ -87,3 +87,26 @@ def evidence_candidates(document, selected_transaction):
     candidates = {role: {role + "-0": {"value": facts[role], "transaction": facts["transaction"]}}
                   for role in ROLES}
     return facts, candidates
+
+
+def scoped_evidence(document, selected_transaction):
+    """Minimize guest input after validating the original collection for ambiguity.
+
+    The guest receives the selected payment and required payer reference only.
+    No credentials, other payments, names, memos, balances or hidden response
+    fields cross this additional trust boundary. This is not anonymization:
+    required payer/payee identifiers remain private inside the sandbox.
+    """
+    reference_facts(document, selected_transaction)
+    row = next(row for row in document['data']['transactions']
+               if row.get('id') == selected_transaction)
+    selected = {key: row[key] for key in ('id', 'status', 'activeHolds', 'disputed',
+                'amount', 'postedAt', 'primaryPartyId')}
+    if 'currency' in row:
+        selected['currency'] = row['currency']
+    routing = row['details']['domesticWireRoutingInfo']
+    selected['details'] = {'kind': row['details']['kind'],
+        'domesticWireRoutingInfo': {key: routing[key]
+                                  for key in ('routingNumber', 'accountNumber')}}
+    return {'data': {'transactions': [selected], 'parties': [
+        {'id': row['primaryPartyId'], 'kind': 'internalDepositoryAccountKind'}]}}

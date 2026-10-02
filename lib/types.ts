@@ -1,22 +1,31 @@
 /** Interpretation of supplied evidence, never authentication of its origin. */
 export type PaymentObservation = {
-  schemaVersion: "1";
+  schemaVersion: "2";
   provider: string;
   transactionId: string;
-  payer: { id: string; scheme: "mercury-party-id"; provenance: "transaction.primaryPartyId" };
+  payer: { id: string; scheme: string; provenance: string };
   payee: {
     id: string;
-    scheme: "us-routing-account";
-    provenance: "transaction.details.domesticWireRoutingInfo";
+    scheme: string;
+    provenance: string;
   };
   amountMinor: string;
-  currency: "USD";
-  direction: "outgoing";
-  status: "sent";
+  currency: string;
+  currencyExponent: number;
+  direction: "outgoing" | "incoming";
+  /** Preserve the bank's exact scoped status; the adopting service owns finality. */
+  status: string;
   timestamp: string;
-  timestampMeaning: "postedAt";
+  timestampMeaning: string;
   sourceAuthenticated: false;
   limitations: string[];
+};
+/** An adapter handles evidence only. It has no HTTP, credentials, signer or intent authority. */
+export type BankAdapter = {
+  readonly id: string;
+  readonly version: string;
+  readonly capability: string;
+  interpret(evidence: unknown, transactionId: string): Interpretation;
 };
 export type Interpretation =
   | { outcome: "supported"; payment: PaymentObservation }

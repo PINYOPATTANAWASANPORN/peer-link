@@ -16,7 +16,7 @@ PERMIT_FIELDS = ("audience", "attempt", "ticket", "artifactDigest", "policyDiges
 def validate(claims, *, now=None):
     now = time.time() if now is None else now
     fields(claims, PERMIT_FIELDS)
-    require(claims["audience"] == "openplaid-verification-v1", "permit_audience")
+    require(claims["audience"] == "peer-link-verification-v1", "permit_audience")
     for name in ("attempt", "ticket"):
         identifier(claims[name])
     for name in ("artifactDigest", "policyDigest", "enclaveKeyDigest", "challenge"):

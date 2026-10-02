@@ -1,6 +1,7 @@
 {
   "schemaVersion": "1",
   "mode": "development",
+  "manualVerification": false,
   "publicAdmission": false,
   "scheduledJudgment": false,
   "automaticPayout": false,

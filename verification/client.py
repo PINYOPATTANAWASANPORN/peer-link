@@ -35,7 +35,7 @@ def verified_session(response, *, nonce, release, context, attempt, binding_dige
     fields(context, ("protocol", "attempt", "bindingDigest", "nonce", "expiresAt"))
     hex_digest(binding_digest)
     hex_digest(context["nonce"])
-    require(context["protocol"] == "openplaid-session-v1" and context["attempt"] == attempt and
+    require(context["protocol"] == "peer-link-session-v1" and context["attempt"] == attempt and
             context["bindingDigest"] == binding_digest, "session_binding_mismatch")
     require(type(context["expiresAt"]) is int and
             time.time() < context["expiresAt"] <= time.time() + 120, "expired_challenge")

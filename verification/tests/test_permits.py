@@ -13,7 +13,7 @@ class PermitTests(unittest.TestCase):
     def setUp(self):
         self.key = Ed25519PrivateKey.generate()
         self.public = self.key.public_key().public_bytes(serialization.Encoding.Raw, serialization.PublicFormat.Raw)
-        self.claims = {"audience":"openplaid-verification-v1", "attempt":"attempt-1", "ticket":"ticket-1",
+        self.claims = {"audience":"peer-link-verification-v1", "attempt":"attempt-1", "ticket":"ticket-1",
                        "artifactDigest":"a"*64, "policyDigest":"b"*64, "enclaveKeyDigest":"c"*64,
                        "challenge":"d"*64, "expiresAt":int(time.time())+60, "maximumMicroUsd":50000}
         self.bindings = {"artifact_digest":"a"*64,"policy_digest":"b"*64,
@@ -31,7 +31,7 @@ class PermitTests(unittest.TestCase):
             verify(permit,self.public,**self.bindings)
 
     def test_expired_and_payment_audience_forbidden(self):
-        for change in ({"expiresAt":0},{"audience":"payout"},{"maximumMicroUsd":50001}):
+        for change in ({"expiresAt":0},{"audience":"payout"},{"audience":"openplaid-verification-v1"},{"maximumMicroUsd":50001}):
             with self.assertRaises(Rejected):
                 issue({**self.claims,**change},self.key)
 

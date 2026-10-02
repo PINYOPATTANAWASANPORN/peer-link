@@ -66,7 +66,7 @@ export function interpretMercury(input, transactionId) {
   return {
     outcome: "supported",
     payment: {
-      schemaVersion: "1",
+      schemaVersion: "2",
       provider: "us/mercury",
       transactionId,
       payer: {
@@ -81,6 +81,7 @@ export function interpretMercury(input, transactionId) {
       },
       amountMinor: cents.toString(),
       currency: "USD",
+      currencyExponent: 2,
       direction: "outgoing",
       status: "sent",
       timestamp: row.postedAt,

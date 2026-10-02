@@ -26,7 +26,7 @@ class DispatchTests(unittest.TestCase):
         self.ticket = ticket['id']
         self.db.judge(self.ticket, actor='operator', version=0, decision='admit', evidence_digest='d' * 64)
         self.attempt = self.db.reserve(self.ticket, 'request-1', self.binding, 40000)['id']
-        self.context = {'protocol': 'openplaid-session-v1', 'attempt': self.attempt,
+        self.context = {'protocol': 'peer-link-session-v1', 'attempt': self.attempt,
                         'bindingDigest': digest(self.binding), 'nonce': 'e' * 64,
                         'expiresAt': int(time.time()) + 60}
         self.args = {'context': self.context, 'attestation': b'synthetic-test-quote',

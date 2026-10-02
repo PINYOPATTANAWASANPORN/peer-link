@@ -18,7 +18,7 @@ class AuthorizedChannelTests(unittest.TestCase):
         self.context = self.channel.challenge('synthetic-attempt', 'd' * 64)
         self.envelope = encrypt_session(self.channel.public_key_der, self.context,
                                        {'syntheticCredential': 'test-only'}, consent=True)
-        self.claims = {'audience': 'openplaid-verification-v1', 'attempt': 'synthetic-attempt',
+        self.claims = {'audience': 'peer-link-verification-v1', 'attempt': 'synthetic-attempt',
                        'ticket': 'synthetic-ticket', 'artifactDigest': 'a' * 64, 'policyDigest': 'b' * 64,
                        'enclaveKeyDigest': hashlib.sha256(self.channel.public_key_der).hexdigest(),
                        'challenge': self.context['nonce'], 'expiresAt': int(time.time()) + 60,

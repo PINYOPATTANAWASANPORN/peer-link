@@ -214,7 +214,7 @@ class AttestationTests(unittest.TestCase):
         ledger.authorize_execution(attempt['id'], context=context, attestation=context_quote,
             public_key_der=channel.public_key_der, release=release, binding=binding,
             private_key=operator)
-        claims = {"audience": "openplaid-contribution-verification-v1", "attempt": attempt["id"],
+        claims = {"audience": "peer-link-contribution-verification-v1", "attempt": attempt["id"],
                   "ticket": ticket["id"], "bindingDigest": digest(binding), "capability": "synthetic-sent",
                   "result": "verified", "issuedAt": int(time.time()), "expiresAt": int(time.time())+120}
         return channel, ledger, claims, binding, args

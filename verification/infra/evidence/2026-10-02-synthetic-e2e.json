@@ -1,0 +1,76 @@
+{
+  "testOnly": true,
+  "liveBankTested": false,
+  "productionReleaseApproved": false,
+  "sourceCommit": "53dcb0c83ccb6a65619640a95d0d40d005efda26",
+  "artifactSha256": "00dd7cfe8d37145369fafbebe6f98d6e508dfaadff4513e02b69e43cb060de79",
+  "eifSha384": "dd359955350c82d34e2f540d1b2e7d7c978c646952028d4cfdcea4d8ec6e66ee3637b36ca3ab2e3b1bd71a853c0eec62",
+  "policyDigest": "b01fd6b746c5a2730a65b8fbea1908ab186cdd37c6ee70da252423afc6a5cb85",
+  "measurements": {
+    "0": "ad037ab635d4af2dc9ecdb94f6408e8749802ad7d543710e6697853adb462d218acaad094e3d89d71ad5a47fc5a6aab1",
+    "1": "4b4d5b3661b3efc12920900c80e126e4ce783c522de6c02a2a5bf7af3a2b9327b86776f188e4be1c1c404a129dbda493",
+    "2": "17c17919cb5af84e4ca952e83b553d23771f19b1a6422007a33aa0d0dd6e73ef6da16a20f42fea51dec625f44bea5919",
+    "8": "4e059572fd623796eeeab9925271586a18e3d52fb348dab1502a872f6c73be6d50b70c4997c56230dba6af46ec9ada87"
+  },
+  "checks": [
+    "real_nitro_chain_signature_pcr0_pcr1_pcr2_pcr8",
+    "client_attestation_before_synthetic_consent",
+    "encrypted_session_through_ssm_and_vsock",
+    "real_https_synthetic_source_through_opaque_relay",
+    "real_compiled_mercury_wasm",
+    "independent_oracle_comparison",
+    "attested_revision_bound_signed_receipt",
+    "replayed_session_rejected",
+    "wrong_nonce_rejected",
+    "wrong_policy_rejected",
+    "wrong_measurement_rejected"
+  ],
+  "receiptDigest": "3a9381fdfb79a0dddd28dc9797228202629c5ee5a55cdaf81a22eb9e548cd6d4",
+  "result": "passed",
+  "negativeSourceTest": {
+    "testOnly": true,
+    "invalidSourceCredentialRejected": true,
+    "receiptIssued": false,
+    "liveBankTested": false
+  },
+  "controllerChecks": [
+    "disabled_dispatch_rejected",
+    "unapproved_request_rejected",
+    "deployment_override_rejected",
+    "exact_artifact_release_bound_launch",
+    "second_worker_rejected_transactionally",
+    "consumed_approval_replay_rejected",
+    "committed_micro_usd_6000000",
+    "paused_budget_rejects_dispatch",
+    "controller_disabled_for_rollback"
+  ],
+  "lifecycle": {
+    "cleanupVerified": true,
+    "bothTestInstancesTerminated": true,
+    "bothEncryptedRootVolumesDeleted": true,
+    "activeLeaseCleared": true,
+    "dispatchDisabled": true,
+    "budgetPaused": true,
+    "reaperTerminationResponse": {
+      "terminated": 1,
+      "active": 1
+    },
+    "cloudTrailConfirmsDedicatedReaper": true,
+    "controllerTestTerminatedAt": "2026-10-02T08:42:55Z",
+    "testStacksDeleted": true,
+    "syntheticArtifactBucketDeleted": true,
+    "testSignerPrivateKeysDisposed": true,
+    "retainedResources": ["isolated VPC/subnet", "paused audit/cost ledger"]
+  },
+  "cost": {
+    "taskCapUsd": 50,
+    "reservedUsd": 6,
+    "actualBillingReconciled": false
+  },
+  "limitations": [
+    "Synthetic HTTPS fixture, not a live bank.",
+    "Disposable signing certificate; production release remains disabled.",
+    "No independent rebuild of this candidate yet.",
+    "GitHub environment protections and owner consented live test remain required."
+  ]
+}

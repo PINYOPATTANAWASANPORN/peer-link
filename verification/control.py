@@ -200,7 +200,7 @@ class Ledger:
                 grant = strict_json(existing["grant_json"])
                 validate_admission(grant["claims"])
             else:
-                grant = issue_admission({"audience": "openplaid-challenge-v1", "attempt": attempt,
+                grant = issue_admission({"audience": "peer-link-challenge-v1", "attempt": attempt,
                     "bindingDigest": row["binding"], "policyDigest": binding["policy"],
                     "enclaveKeyDigest": key_digest,
                     "expiresAt": min(ticket["expires"], int(release["expiresAt"]), int(time.time()) + 120)},
@@ -220,7 +220,7 @@ class Ledger:
         The live enclave must still consume that challenge before any work or inference.
         """
         fields(context, ("protocol", "attempt", "bindingDigest", "nonce", "expiresAt"))
-        require(context["protocol"] == "openplaid-session-v1" and context["attempt"] == attempt,
+        require(context["protocol"] == "peer-link-session-v1" and context["attempt"] == attempt,
                 "permit_context")
         hex_digest(context["nonce"])
         require(type(context["expiresAt"]) is int and
@@ -261,7 +261,7 @@ class Ledger:
                 require(not self.db.execute(
                     "SELECT 1 FROM execution_permits WHERE enclave_key_digest=? AND challenge=?",
                     (key_digest, context["nonce"])).fetchone(), "permit_challenge_reused")
-                claims = {"audience": "openplaid-verification-v1", "attempt": attempt,
+                claims = {"audience": "peer-link-verification-v1", "attempt": attempt,
                           "ticket": row["ticket"], "artifactDigest": ticket["revision"],
                           "policyDigest": binding["policy"], "enclaveKeyDigest": key_digest,
                           "challenge": context["nonce"],

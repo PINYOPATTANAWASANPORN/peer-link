@@ -1,6 +1,6 @@
-# OpenPlaid agent instructions
+# Peer Link agent instructions
 
-OpenPlaid collects inspectable banking integration knowledge. Read the relevant skill in `skills/` before contributing. Each adapter has a narrow documented scope; a listed bank is not a promise of support for every payment type.
+Peer Link collects inspectable banking integration knowledge. Read the relevant skill in `skills/` before contributing. Each adapter has a narrow documented scope; a listed bank is not a promise of support for every payment type.
 
 ## Non-negotiable boundaries
 
@@ -12,7 +12,7 @@ OpenPlaid collects inspectable banking integration knowledge. Read the relevant 
 - Keep integrations pure and deterministic. Bank access stays in documented contributor-local browser steps. No credential-aware code in CI.
 - Tests must include wrong payer/payee, amount/currency errors, nonfinal/unknown statuses, missing identifiers, malformed input, duplicate selection and untrusted memo/display text. Coverage alone is not correctness.
 - Reports name the exact adapter and harness commit, date, surface, capability and limitations. Never fabricate live reports or count GitHub handles as unique humans.
-- No automatic payout based on merges, counts, coverage or self-reported success. Incentives launch unfunded.
+- No automatic payout based on merges, counts, coverage or self-reported success. Only explicitly funded and assigned issue terms authorize a reward.
 
 ## Commands
 

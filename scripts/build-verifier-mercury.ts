@@ -16,7 +16,7 @@ if (Buffer.byteLength(source) > 65536) throw new Error("Adapter source exceeds b
 const bundle = transformSync(source, {
   minify: true,
   format: "iife",
-  globalName: "OpenPlaidMercury",
+  globalName: "PeerLinkMercury",
 }).code;
 const wrapper = readFileSync("verification/infra/mercury-wasm-entry.js", "utf8");
 const directory = ".local/verification";

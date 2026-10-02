@@ -7,7 +7,7 @@ No result here establishes source authenticity, authorizes a receipt or pays fun
 import hashlib
 
 from .common import fields, require
-from .mercury_oracle import CAPABILITY, evidence_candidates
+from .mercury_oracle import CAPABILITY, evidence_candidates, scoped_evidence
 from .permits import verify
 from .sandbox import MAX_MODULE, run_adapter
 
@@ -18,9 +18,10 @@ def payment_facts(result):
     require(result['outcome'] == 'supported', 'adapter_abstained')
     payment = result['payment']
     fields(payment, ('schemaVersion', 'provider', 'transactionId', 'payer', 'payee',
-                     'amountMinor', 'currency', 'direction', 'status', 'timestamp',
+                     'amountMinor', 'currency', 'currencyExponent', 'direction', 'status', 'timestamp',
                      'timestampMeaning', 'sourceAuthenticated', 'limitations'))
-    require(payment['schemaVersion'] == '1' and payment['provider'] == 'us/mercury' and
+    require(payment['schemaVersion'] == '2' and payment['provider'] == 'us/mercury' and
+            type(payment['currencyExponent']) is int and payment['currencyExponent'] == 2 and
             payment['sourceAuthenticated'] is False, 'adapter_contract')
     for role, scheme, provenance in (
         ('payer', 'mercury-party-id', 'transaction.primaryPartyId'),
@@ -54,7 +55,8 @@ def check_adapter(module, document, selected_transaction, *, permit, operator_pu
     claims = verify(permit, operator_public_key, enclave_key_digest=enclave_key_digest,
                     policy_digest=policy_digest, artifact_digest=artifact_digest, challenge=challenge)
     expected, candidates = evidence_candidates(document, selected_transaction)
-    result = run_adapter(module, {'evidence': document, 'transactionId': selected_transaction},
+    result = run_adapter(module, {'evidence': scoped_evidence(document, selected_transaction),
+                                 'transactionId': selected_transaction},
                          artifact_digest=claims['artifactDigest'])
     require(isinstance(result, dict), 'adapter_contract')
     if result.get('outcome') in ('insufficient_evidence', 'unsupported'):

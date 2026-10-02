@@ -1,5 +1,6 @@
 """Private Wasm worker entrypoint. Only sandbox.run_adapter should launch this."""
 import resource
+import os
 import struct
 import sys
 from pathlib import Path
@@ -141,6 +142,17 @@ def main():
     resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
     if sys.platform == 'linux':
         resource.setrlimit(resource.RLIMIT_AS, (1024 * 1024 * 1024,) * 2)
+        # A Wasmtime escape must not inherit the reader/runtime's Unix identity.
+        # This is defense in depth; it is not a claim that Wasm eliminates CVEs.
+        import ctypes
+        libc = ctypes.CDLL(None, use_errno=True)
+        require(libc.prctl(38, 1, 0, 0, 0) == 0, 'sandbox_no_new_privileges')
+        require(libc.prctl(4, 0, 0, 0, 0) == 0, 'sandbox_no_dump')
+        if os.getuid() == 0:
+            os.setgroups([])
+            os.setgid(65534)
+            os.setuid(65534)
+        require(os.getuid() != 0, 'sandbox_root_forbidden')
     try:
         request = strict_json(sys.stdin.buffer.read(5 * 1024 * 1024 + 1), 5 * 1024 * 1024)
         module = unb64(request['module'], MAX_MODULE)

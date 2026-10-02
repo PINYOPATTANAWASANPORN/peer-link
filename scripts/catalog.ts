@@ -36,7 +36,7 @@ const providers = files
       ...manifest,
       reportCount: reports.length,
       evidence,
-      source: `https://github.com/0xSachinK/openplaid/tree/main/${bank}`,
+      source: `https://github.com/zkp2p/peer-link/tree/main/${bank}`,
     };
   });
 writeFileSync(

@@ -10,7 +10,7 @@ CLAIMS = ("audience", "attempt", "bindingDigest", "policyDigest", "enclaveKeyDig
 
 def validate(claims):
     fields(claims, CLAIMS)
-    require(claims["audience"] == "openplaid-challenge-v1", "admission_audience")
+    require(claims["audience"] == "peer-link-challenge-v1", "admission_audience")
     identifier(claims["attempt"])
     for name in ("bindingDigest", "policyDigest", "enclaveKeyDigest"):
         hex_digest(claims[name])

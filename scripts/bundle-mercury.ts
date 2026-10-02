@@ -6,7 +6,7 @@ const source = readFileSync("banks/us/mercury/transformer.js", "utf8");
 const bundle = transformSync(source, {
   minify: true,
   format: "iife",
-  globalName: "OpenPlaidMercury",
+  globalName: "PeerLinkMercury",
 }).code;
 mkdirSync(".local", { recursive: true });
 writeFileSync(".local/mercury-parser.js", bundle);

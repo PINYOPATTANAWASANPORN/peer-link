@@ -12,7 +12,7 @@ from cryptography.hazmat.primitives.asymmetric import padding, rsa
 from .attestation import verify_document
 from .common import Rejected, b64, canonical, fields, hex_digest, identifier, require, unb64
 
-DOMAIN = b"OpenPlaid verification receipt v1\x00"
+DOMAIN = b"Peer Link verification receipt v1\x00"
 CLAIMS = ("audience", "attempt", "ticket", "bindingDigest", "capability", "result", "issuedAt", "expiresAt")
 RESULTS = ("verified", "contradicted", "needs_review", "blocked")
 
@@ -20,7 +20,7 @@ RESULTS = ("verified", "contradicted", "needs_review", "blocked")
 def validate(claims, now=None):
     now = time.time() if now is None else now
     fields(claims, CLAIMS)
-    require(claims["audience"] == "openplaid-contribution-verification-v1", "receipt_audience")
+    require(claims["audience"] == "peer-link-contribution-verification-v1", "receipt_audience")
     for name in ("attempt", "ticket", "capability"):
         identifier(claims[name])
     hex_digest(claims["bindingDigest"])

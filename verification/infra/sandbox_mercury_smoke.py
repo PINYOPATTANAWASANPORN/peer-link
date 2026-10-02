@@ -45,7 +45,7 @@ from verification.adapter_check import check_adapter
 from verification.permits import issue
 
 controller = Ed25519PrivateKey.generate()
-permit = issue({'audience': 'openplaid-verification-v1', 'attempt': 'synthetic-attempt',
+permit = issue({'audience': 'peer-link-verification-v1', 'attempt': 'synthetic-attempt',
                 'ticket': 'synthetic-ticket', 'artifactDigest': digest,
                 'policyDigest': 'a' * 64, 'enclaveKeyDigest': 'b' * 64, 'challenge': 'c' * 64,
                 'expiresAt': int(time.time()) + 60, 'maximumMicroUsd': 1}, controller)

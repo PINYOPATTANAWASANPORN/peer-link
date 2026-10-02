@@ -56,7 +56,7 @@ class SessionChannel:
                 require(prior["context"]["nonce"] in self.challenges, "admission_consumed")
                 return dict(prior["context"])
             require(len(self.admissions) < 100 and len(self.challenges) < 100, "capacity")
-            context = {"protocol": "openplaid-session-v1", "attempt": claims["attempt"],
+            context = {"protocol": "peer-link-session-v1", "attempt": claims["attempt"],
                        "bindingDigest": claims["bindingDigest"], "nonce": secrets.token_hex(32),
                        "expiresAt": claims["expiresAt"]}
             self.admissions[claims["attempt"]] = {"digest": digest(grant), "context": context}
@@ -68,7 +68,7 @@ class SessionChannel:
         with self.lock:
             self.challenges = {k: v for k, v in self.challenges.items() if v["expiresAt"] > time.time()}
             require(len(self.challenges) < 100, "capacity")
-            context = {"protocol": "openplaid-session-v1", "attempt": attempt,
+            context = {"protocol": "peer-link-session-v1", "attempt": attempt,
                        "bindingDigest": binding_digest, "nonce": secrets.token_hex(32),
                        "expiresAt": int(time.time()) + 120}
             self.challenges[context["nonce"]] = context
@@ -88,7 +88,7 @@ class SessionChannel:
         context = envelope["context"]
         fields(context, ("protocol", "attempt", "bindingDigest", "nonce", "expiresAt"))
         hex_digest(context["nonce"])
-        require(context["protocol"] == "openplaid-session-v1" and
+        require(context["protocol"] == "peer-link-session-v1" and
                 type(context["expiresAt"]) is int, "invalid_context")
         claims = verify_permit(permit, operator_public_key,
                                enclave_key_digest=hashlib.sha256(self.public_key_der).hexdigest(),

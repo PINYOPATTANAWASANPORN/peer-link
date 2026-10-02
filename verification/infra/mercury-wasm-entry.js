@@ -7,5 +7,5 @@ while (used < input.length) {
   used += count;
 }
 const request = JSON.parse(new TextDecoder().decode(input.subarray(0, used)));
-const result = OpenPlaidMercury.interpretMercury(request.evidence, request.transactionId);
+const result = PeerLinkMercury.interpretMercury(request.evidence, request.transactionId);
 Javy.IO.writeSync(1, new TextEncoder().encode(JSON.stringify(result)));

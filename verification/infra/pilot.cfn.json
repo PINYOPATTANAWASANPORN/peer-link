@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "OpenPlaid isolated Nitro build and verification pilot. No inbound ports, no bank credentials, no scheduled agent jobs.",
+  "Description": "Peer Link isolated Nitro synthetic pilot. No ingress or application secrets; external expiry guard.",
   "Parameters": {
     "VpcId": {
       "Type": "AWS::EC2::VPC::Id"
@@ -29,15 +29,53 @@
             }
           ]
         },
-        "ManagedPolicyArns": ["arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"],
         "Tags": [
           {
             "Key": "Project",
-            "Value": "openplaid"
+            "Value": "peer-link"
           },
           {
             "Key": "Environment",
             "Value": "pilot"
+          }
+        ],
+        "Policies": [
+          {
+            "PolicyName": "SessionManagerTransportOnly",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "ssm:UpdateInstanceInformation",
+                    "ssmmessages:CreateControlChannel",
+                    "ssmmessages:CreateDataChannel",
+                    "ssmmessages:OpenControlChannel",
+                    "ssmmessages:OpenDataChannel",
+                    "ec2messages:AcknowledgeMessage",
+                    "ec2messages:DeleteMessage",
+                    "ec2messages:FailMessage",
+                    "ec2messages:GetEndpoint",
+                    "ec2messages:GetMessages",
+                    "ec2messages:SendReply"
+                  ],
+                  "Resource": "*"
+                },
+                {
+                  "Effect": "Deny",
+                  "Action": [
+                    "ssm:GetParameter*",
+                    "secretsmanager:*",
+                    "kms:*",
+                    "sts:AssumeRole",
+                    "iam:*",
+                    "s3:*"
+                  ],
+                  "Resource": "*"
+                }
+              ]
+            }
           }
         ]
       }
@@ -55,7 +93,7 @@
     "SecurityGroup": {
       "Type": "AWS::EC2::SecurityGroup",
       "Properties": {
-        "GroupDescription": "OpenPlaid pilot: no ingress, TLS egress for packages and SSM only",
+        "GroupDescription": "Peer Link synthetic build: no ingress; outbound TLS only",
         "VpcId": {
           "Ref": "VpcId"
         },
@@ -70,7 +108,7 @@
         "Tags": [
           {
             "Key": "Project",
-            "Value": "openplaid"
+            "Value": "peer-link"
           }
         ]
       }
@@ -121,11 +159,11 @@
         "Tags": [
           {
             "Key": "Name",
-            "Value": "openplaid-verifier-pilot"
+            "Value": "peer-link-verifier-pilot"
           },
           {
             "Key": "Project",
-            "Value": "openplaid"
+            "Value": "peer-link"
           },
           {
             "Key": "Environment",
@@ -133,7 +171,7 @@
           },
           {
             "Key": "Owner",
-            "Value": "openplaid"
+            "Value": "peer-link"
           }
         ],
         "UserData": {
@@ -148,11 +186,137 @@
                 "systemctl enable --now docker",
                 "printf '%s\\n' '---' 'memory_mib: 2048' 'cpu_count: 2' > /etc/nitro_enclaves/allocator.yaml",
                 "systemctl enable --now nitro-enclaves-allocator.service",
-                "install -d -m 700 /opt/openplaid"
+                "install -d -m 700 /opt/peer-link"
               ]
             ]
           }
         }
+      },
+      "DependsOn": ["ExpirySchedule", "ExpiryPermission"]
+    },
+    "ExpiryRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        },
+        "Policies": [
+          {
+            "PolicyName": "ExpireOnlyThisStack",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": "ec2:DescribeInstances",
+                  "Resource": "*"
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": "ec2:TerminateInstances",
+                  "Resource": {
+                    "Fn::Sub": "arn:${AWS::Partition}:ec2:${AWS::Region}:${AWS::AccountId}:instance/*"
+                  },
+                  "Condition": {
+                    "StringEquals": {
+                      "ec2:ResourceTag/aws:cloudformation:stack-id": {
+                        "Ref": "AWS::StackId"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "ExpiryFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Runtime": "python3.12",
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": ["ExpiryRole", "Arn"]
+        },
+        "Timeout": 30,
+        "MemorySize": 128,
+        "Environment": {
+          "Variables": {
+            "STACK_ID": {
+              "Ref": "AWS::StackId"
+            }
+          }
+        },
+        "Code": {
+          "ZipFile": "import boto3, datetime, os\n\ndef handler(event, context):\n    ec2=boto3.client('ec2')\n    response=ec2.describe_instances(Filters=[{'Name':'tag:aws:cloudformation:stack-id','Values':[os.environ['STACK_ID']]},{'Name':'instance-state-name','Values':['pending','running','stopping','stopped']}])\n    now=datetime.datetime.now(datetime.timezone.utc)\n    expired=[i['InstanceId'] for r in response['Reservations'] for i in r['Instances'] if (now-i['LaunchTime']).total_seconds()>6600 or i['State']['Name'] in ('stopping','stopped')]\n    if expired: ec2.terminate_instances(InstanceIds=expired)\n    return {'terminated':len(expired)}\n"
+        }
+      }
+    },
+    "ExpirySchedule": {
+      "Type": "AWS::Events::Rule",
+      "Properties": {
+        "ScheduleExpression": "rate(5 minutes)",
+        "State": "ENABLED",
+        "Targets": [
+          {
+            "Arn": {
+              "Fn::GetAtt": ["ExpiryFunction", "Arn"]
+            },
+            "Id": "ExpirePilot",
+            "RetryPolicy": {
+              "MaximumRetryAttempts": 2,
+              "MaximumEventAgeInSeconds": 300
+            }
+          }
+        ]
+      }
+    },
+    "ExpiryPermission": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "ExpiryFunction"
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "events.amazonaws.com",
+        "SourceArn": {
+          "Fn::GetAtt": ["ExpirySchedule", "Arn"]
+        },
+        "SourceAccount": {
+          "Ref": "AWS::AccountId"
+        }
+      }
+    },
+    "ExpiryErrors": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmDescription": "Peer Link expiry guard failing: inspect and terminate only this pilot stack.",
+        "Namespace": "AWS/Lambda",
+        "MetricName": "Errors",
+        "Dimensions": [
+          {
+            "Name": "FunctionName",
+            "Value": {
+              "Ref": "ExpiryFunction"
+            }
+          }
+        ],
+        "Statistic": "Sum",
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "Threshold": 1,
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "TreatMissingData": "notBreaching"
       }
     }
   },

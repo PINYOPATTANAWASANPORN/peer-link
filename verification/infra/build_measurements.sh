@@ -10,7 +10,7 @@ mkdir -p "$out"
 # Same immutable Python image used by the hardware pilot.
 base='python@sha256:4b4c524dc3dce996864e030c7bd9c6b0e517597189fee48f48e05b499442444b'
 builder='amazonlinux@sha256:bc20ab39b3e976096f7e5782e9457eb5144810a3cbdbfdbe111d1b31b82f47b4'
-docker build --no-cache --build-arg "BASE_IMAGE=$base" -f verification/infra/Dockerfile -t openplaid-ci:eif .
+docker build --no-cache --build-arg "BASE_IMAGE=$base" -f verification/infra/Dockerfile -t peer-link-ci:eif .
 # The socket grants control of this disposable build host. Never run on a host
 # containing credentials, bank sessions, production containers or signing keys.
 docker run --rm --platform linux/amd64 -v /var/run/docker.sock:/var/run/docker.sock \
@@ -19,7 +19,7 @@ docker run --rm --platform linux/amd64 -v /var/run/docker.sock:/var/run/docker.s
     test "$(nitro-cli --version)" = "Nitro CLI 1.5.0"
     export NITRO_CLI_ARTIFACTS=/tmp/nitro-artifacts
     mkdir -p "$NITRO_CLI_ARTIFACTS"
-    nitro-cli build-enclave --docker-uri openplaid-ci:eif --output-file /output/image.eif > /output/measurements.json
+    nitro-cli build-enclave --docker-uri peer-link-ci:eif --output-file /output/image.eif > /output/measurements.json
     python3 /tools/normalize_eif.py /output/image.eif /output/normalized.eif "$SOURCE_REVISION"
     nitro-cli describe-eif --eif-path /output/normalized.eif > /output/normalized-description.json
     rpm -qa | sort > /output/builder-packages.txt

@@ -1,0 +1,55 @@
+name: Request approved bank verification
+on:
+  workflow_dispatch:
+    inputs:
+      approval_id:
+        description: Existing maintainer-reviewed approval ID (32 lowercase hex characters)
+        required: true
+        type: string
+permissions: {}
+concurrency:
+  group: peer-link-manual-verification
+  cancel-in-progress: false
+jobs:
+  request:
+    if: github.ref == 'refs/heads/main' && vars.PEER_LINK_DISPATCH_ENABLED == 'true'
+    environment: peer-link-verification
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      id-token: write
+    steps:
+      # Deliberately no checkout, PR artifacts, contributor script or bank secret.
+      - name: Validate request shape
+        env:
+          APPROVAL_ID: ${{ inputs.approval_id }}
+        run: |
+          python3 - <<'PY'
+          import os,re
+          assert re.fullmatch(r'[a-f0-9]{32}', os.environ['APPROVAL_ID'])
+          PY
+      - uses: aws-actions/configure-aws-credentials@7474bc4690e29a8392af63c5b98e7449536d5c3a # v4.3.1
+        with:
+          role-to-assume: ${{ vars.PEER_LINK_INVOKE_ROLE }}
+          aws-region: us-east-1
+          role-duration-seconds: 900
+          allowed-account-ids: ${{ vars.PEER_LINK_AWS_ACCOUNT }}
+          unset-current-credentials: true
+      - name: Invoke pinned trusted controller
+        env:
+          APPROVAL_ID: ${{ inputs.approval_id }}
+          CONTROLLER: ${{ vars.PEER_LINK_CONTROLLER_VERSION_ARN }}
+        run: |
+          python3 - <<'PY'
+          import json,os,re,subprocess,tempfile
+          arn=os.environ['CONTROLLER']
+          assert re.fullmatch(r'arn:aws:lambda:us-east-1:[0-9]{12}:function:peer-link-[a-z0-9-]+:[1-9][0-9]*',arn)
+          with tempfile.TemporaryDirectory() as path:
+              output=path+'/result.json'
+              subprocess.run(['aws','lambda','invoke','--function-name',arn,
+                  '--cli-binary-format','raw-in-base64-out','--payload',
+                  json.dumps({'approvalId':os.environ['APPROVAL_ID']}),output],check=True)
+              result=json.load(open(output))
+              assert 'error' not in result, 'Dispatch refused or uncertain; operator must reconcile before retrying'
+              print(json.dumps(result))
+          PY

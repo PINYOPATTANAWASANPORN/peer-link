@@ -27,7 +27,7 @@ class PipelineTests(unittest.TestCase):
                         'sourceContext': {'organizationId': '00000000-0000-0000-0000-000000000000'},
                         'transactionId': fixture.selected}
         self.envelope = self.encrypt(self.session)
-        self.permit = issue({'audience': 'openplaid-verification-v1', 'attempt': 'attempt-1',
+        self.permit = issue({'audience': 'peer-link-verification-v1', 'attempt': 'attempt-1',
             'ticket': 'ticket-1', 'artifactDigest': hashlib.sha256(self.module).hexdigest(),
             'policyDigest': 'b' * 64, 'enclaveKeyDigest': hashlib.sha256(self.channel.public_key_der).hexdigest(),
             'challenge': self.context['nonce'], 'expiresAt': self.context['expiresAt'],

@@ -72,7 +72,7 @@ def verify_document(raw, *, nonce, public_key_der, release, now=None):
                          for cert in doc["cabundle"])
         # OpenSSL handles validity, CA constraints, signatures, path lengths and unknown critical
         # extensions. Explicit trust anchor only; no network or system CA store is consulted.
-        with tempfile.TemporaryDirectory(prefix="openplaid-cert-") as directory:
+        with tempfile.TemporaryDirectory(prefix="peer-link-cert-") as directory:
             path = Path(directory)
             (path / "leaf").write_bytes(leaf.public_bytes(serialization.Encoding.PEM))
             (path / "chain").write_bytes(chain)

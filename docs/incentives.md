@@ -1,27 +1,73 @@
-# Incentives
+# Targeted integration rewards
 
-OpenPlaid launches with **unfunded contribution requests**. There is no token and no automatic reward. A merge, successful report, GitHub contribution count or coverage percentage does not entitle anyone to payment.
+Rewards are capped at **$50 total per bank**, including collaborator splits.
+The task has a **$1,000 funding authorization including funding fees**, separate
+from the $50 infrastructure authorization. There is no token or automatic payout.
 
-## Round 1 — bounty allocation
+## Funding status — October 2, 2026
 
-[The complete allocation and 60 bounty links](https://github.com/0xSachinK/openplaid/issues/64) cover 41 geographies: **20 × $200 + 40 × $150 = $10,000 USD**. No integration award exceeds $200. Funds have not been deposited or escrowed. Check each issue's current funding status before starting paid work.
+An initial **500 USDC** was deposited into the verified sponsor's Merit account
+on Base (chain 8453). [Successful transfer](https://basescan.org/tx/0x53902d363f347e888b63d5266b95da66f9f53ee1fa487331bef583c65ec695c9).
+Merit displays a $500 credited balance. **Allocation to the project is pending**;
+this deposit alone does not activate a funded issue. Wait for explicit funding
+confirmation and assignment in the bank issue before starting paid work.
 
-The shortlist balances historical P2P demand, geographic breadth and distinct provider coverage. Its source snapshots describe standing liquidity and ad activity, not completed trading volume. Country-level bank choices based on pooled currencies or generic rails are identified as judgments, not measured bank shares. Each award buys one narrow experimental account/payment parser, tests, documentation and a privacy-safe contributor live report—not production certification or automatic Peer support.
+The previous unfunded $10,000 / 60-bank proposal has been retired. Its $150–$200
+amounts are not offers under this program. Existing earned or assigned obligations
+must be reconciled before changing an issue; no earned payout is cancelled here.
+The initial audit found no project funding or payouts and no assigned GitHub bank
+claims. The Vietcombank lead explicitly waited for funding before starting.
 
-Contributions and bank requests from any geography remain welcome. The $10,000 is fully allocated; additional paid targets require explicit reallocation of unassigned funds or a later round. Related products, aliases and duplicated code do not create extra awards. The linked issue terms govern assignment, review, deadlines, collaborator splits and acceptance.
+## Proposed first allocations
 
-The [Merit Terminal project](https://terminal.merit.systems/0xSachinK/openplaid) is the optional distribution and payout channel. [GitHub issues](https://github.com/0xSachinK/openplaid/issues?q=is%3Aissue%20is%3Aopen%20label%3Aunfunded) remain the public work queue; contributors can participate without a wallet or Merit account. A project page or sponsor link does not imply that funds have been deposited.
+| Bank | Maximum | Narrow scope and reason |
+| --- | ---: | --- |
+| Monobank | $50 | One completed UAH bank transfer with exact counterparty provenance; original parser, negative fixtures, docs and one authorized live report. Official statement API makes acquisition plausible; an account owner is still needed. |
+| Vietcombank | $50 | One completed VND domestic bank transfer on a named Digibank surface, with the same deliverables. Existing contributor lead makes access more plausible; they must reconfirm the smaller scope and amount. |
+| [Chase](https://github.com/zkp2p/peer-link/issues/73) | $25 | Feasibility package for one US transfer surface: authorized account access, privacy-safe field-provenance report, synthetic shape and fail-closed limitations. No promise that a parser or Peer support follows. |
+| [Bank of America](https://github.com/zkp2p/peer-link/issues/74) | $25 | Same bounded feasibility package; prove that exact recipient and payment status are available before commissioning an adapter. |
+| [Wells Fargo](https://github.com/zkp2p/peer-link/issues/75) | $25 | Same bounded feasibility package; do not treat Zelle, ACH and wire records as interchangeable. |
 
-You can also [propose an integration](https://github.com/0xSachinK/openplaid/issues/new?template=bank-request.md) outside the paid shortlist.
+These allocations total **$175**, leaving **$325 unassigned** from the initial
+pool. A reviewed US feasibility result may receive a separately assigned parser
+extension, but the combined total stays at or below $50 for that bank. Mercury
+is the internal test baseline; existing founder work does not earn a new bounty.
+The remaining authorized budget is not automatically deposited or committed.
+See [prioritization evidence](integration-priorities.md).
 
-Before a request becomes a funded bounty, its sponsor must publish the amount/currency, funding evidence or platform status, scope, deliverables, acceptance reviewer, deadline, competing-claim rules and payout conditions. Never label unfunded work as funded. Only the sponsor can authorize spending.
+## Assignment and acceptance
 
-Suggested work categories:
-- New bank integration with documented payment semantics, fixtures and negative tests.
-- Independent live reproduction, including useful failures and clear limitations.
-- Maintenance after an upstream bank change.
-- Security or privacy fixes through the private reporting channel.
+1. Comment with the bank, authorized surface, proposed payment type and known
+   limitations. Do not send credentials or financial records. The maintainer
+   assigns one attempt for 14 days; extensions must be written in the issue.
+2. The funded issue states its exact scope, amount, sponsor/reviewer, funding
+   evidence and submission deadline (normally 30 days after funding confirmation).
+   Unassigned competing work creates no additional payment obligation.
+3. Parser awards require original MIT-compatible code, a manifest, acquisition
+   notes, independently justified synthetic fixtures and meaningful negative
+   cases. Run `npm run check` and the staged privacy check before every push.
+4. A parser award includes one explicitly owner-authorized, privacy-safe live
+   report bound to the exact committed adapter and harness versions. Synthetic
+   tests alone are not a live report. Never initiate a payment for this task.
+   There is **no three-user testing requirement**.
+5. A feasibility award is judged on an accurate, reproducible provenance and
+   limitation report. A well-supported finding that the surface cannot establish
+   exact payment semantics can satisfy that written feasibility scope. It does
+   not automatically satisfy a parser award.
+6. Maintainer @0xSachinK reviews the assigned scope and records acceptance in the
+   issue before authorizing Merit payout. Merge, coverage, AI output and enclave
+   reports do not automatically approve rewards or Peer production support.
+7. Collaborators agree a split before starting, within the bank's total cap. No
+   duplicate rewards, per-identity payouts or silent scope expansion. Disputes
+   are evaluated by the named reviewer against the written criteria; disclose
+   conflicts of interest.
 
-Maintainership and acceptance are manual. Do not pay per identity, success tally, duplicate fixture or self-generated activity. Contributors can collude; passing CI is not proof of live bank access. Disputes are resolved against written issue criteria by the named reviewer; conflicts of interest should be disclosed.
+The [Merit project](https://terminal.merit.systems/zkp2p/peer-link) is the
+allocation and payout reference; its repository identity now matches `zkp2p/peer-link`.
+Contributors complete any tax, wallet and eligibility setup directly with Merit.
+Vietnam payout eligibility has **not** been independently confirmed; a Vietnamese
+contributor should verify the available payout route before accepting paid work.
+Never submit identity or banking documents in a GitHub issue.
 
-Round 1 allocates $10,000 in awards; **funds have not been deposited**. Tax, wallet or payout onboarding is for the recipient to complete directly when a funded reward exists.
+Community contributions outside the paid shortlist remain welcome. A bank request
+or an unallocated reserve is not a funded award.

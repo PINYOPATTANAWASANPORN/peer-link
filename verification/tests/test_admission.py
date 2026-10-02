@@ -19,7 +19,7 @@ class AdmissionTests(unittest.TestCase):
         self.signer = Ed25519PrivateKey.generate()
         self.public = self.signer.public_key().public_bytes(
             serialization.Encoding.Raw, serialization.PublicFormat.Raw)
-        self.claims = {'audience': 'openplaid-challenge-v1', 'attempt': 'synthetic',
+        self.claims = {'audience': 'peer-link-challenge-v1', 'attempt': 'synthetic',
                        'enclaveKeyDigest': hashlib.sha256(self.channel.public_key_der).hexdigest(),
                        'bindingDigest': 'b' * 64, 'policyDigest': 'c' * 64,
                        'expiresAt': int(time.time()) + 60}

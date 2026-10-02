@@ -1,0 +1,156 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Peer Link verification-only VPC. No peering, NAT, ingress or Peer service access.",
+  "Resources": {
+    "Vpc": {
+      "Type": "AWS::EC2::VPC",
+      "Properties": {
+        "CidrBlock": "10.238.0.0/24",
+        "EnableDnsSupport": true,
+        "EnableDnsHostnames": true,
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "peer-link"
+          },
+          {
+            "Key": "Owner",
+            "Value": "peer-link"
+          },
+          {
+            "Key": "Environment",
+            "Value": "verification-pilot"
+          },
+          {
+            "Key": "Name",
+            "Value": "peer-link-verification"
+          }
+        ]
+      }
+    },
+    "Gateway": {
+      "Type": "AWS::EC2::InternetGateway",
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "peer-link"
+          },
+          {
+            "Key": "Owner",
+            "Value": "peer-link"
+          },
+          {
+            "Key": "Environment",
+            "Value": "verification-pilot"
+          },
+          {
+            "Key": "Name",
+            "Value": "peer-link-verification"
+          }
+        ]
+      }
+    },
+    "GatewayAttachment": {
+      "Type": "AWS::EC2::VPCGatewayAttachment",
+      "Properties": {
+        "VpcId": {
+          "Ref": "Vpc"
+        },
+        "InternetGatewayId": {
+          "Ref": "Gateway"
+        }
+      }
+    },
+    "Subnet": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "VpcId": {
+          "Ref": "Vpc"
+        },
+        "CidrBlock": "10.238.0.0/26",
+        "MapPublicIpOnLaunch": false,
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "peer-link"
+          },
+          {
+            "Key": "Owner",
+            "Value": "peer-link"
+          },
+          {
+            "Key": "Environment",
+            "Value": "verification-pilot"
+          },
+          {
+            "Key": "Name",
+            "Value": "peer-link-verification"
+          }
+        ]
+      }
+    },
+    "RouteTable": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "Vpc"
+        },
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "peer-link"
+          },
+          {
+            "Key": "Owner",
+            "Value": "peer-link"
+          },
+          {
+            "Key": "Environment",
+            "Value": "verification-pilot"
+          },
+          {
+            "Key": "Name",
+            "Value": "peer-link-verification"
+          }
+        ]
+      }
+    },
+    "Route": {
+      "Type": "AWS::EC2::Route",
+      "DependsOn": "GatewayAttachment",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "RouteTable"
+        },
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": {
+          "Ref": "Gateway"
+        }
+      }
+    },
+    "SubnetRoute": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "RouteTable"
+        },
+        "SubnetId": {
+          "Ref": "Subnet"
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "VpcId": {
+      "Value": {
+        "Ref": "Vpc"
+      }
+    },
+    "SubnetId": {
+      "Value": {
+        "Ref": "Subnet"
+      }
+    }
+  }
+}

@@ -1,1 +1,7 @@
 * @0xSachinK
+
+# Trusted verifier/deployment changes require maintainer review, independently of adapters.
+/.github/ @0xSachinK
+/verification/ @0xSachinK
+/lib/ @0xSachinK
+/scripts/ @0xSachinK

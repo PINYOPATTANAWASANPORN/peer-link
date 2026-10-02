@@ -2,10 +2,10 @@
 ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_DISABLE_PIP_VERSION_CHECK=1
-WORKDIR /opt/openplaid
+WORKDIR /opt/peer-link
 COPY verification/requirements.lock /tmp/requirements.lock
 COPY verification/requirements-sandbox.lock /tmp/requirements-sandbox.lock
 RUN pip install --no-cache-dir -r /tmp/requirements.lock -r /tmp/requirements-sandbox.lock
-COPY verification /opt/openplaid/verification
-COPY banks/us/mercury/fixtures/sent.synthetic.json /opt/openplaid/banks/us/mercury/fixtures/sent.synthetic.json
-ENTRYPOINT ["/usr/local/bin/python", "/opt/openplaid/verification/infra/hardware_probe.py"]
+COPY verification /opt/peer-link/verification
+COPY banks/us/mercury/fixtures/sent.synthetic.json /opt/peer-link/banks/us/mercury/fixtures/sent.synthetic.json
+ENTRYPOINT ["/usr/local/bin/python", "/opt/peer-link/verification/infra/hardware_probe.py"]

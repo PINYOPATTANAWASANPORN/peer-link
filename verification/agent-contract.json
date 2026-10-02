@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1",
-  "service": "openplaid-verification",
+  "service": "peer-link-verification",
   "status": "development",
   "discovery": {
     "instructions": "skills/operate-verifier/SKILL.md",
@@ -26,7 +26,10 @@
     "sessionChallengeTransport": "verification.runtime.Runtime.handle: challenge",
     "clientSessionVerification": "verification.client.verified_session",
     "privateAcquisitionPipeline": "verification.pipeline.acquire_and_compare",
-    "syntheticAgentEvaluation": "python -m verification.agent_eval --help"
+    "syntheticAgentEvaluation": "python -m verification.agent_eval --help",
+    "manualOperator": "python -m verification.manual --help",
+    "ownerClient": "python -m verification.owner_client --help",
+    "sessionExecutionTransport": "verification.runtime.Runtime.handle: execute"
   },
   "judgments": [
     {

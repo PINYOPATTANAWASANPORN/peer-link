@@ -31,7 +31,7 @@ class RuntimeTests(unittest.TestCase):
             signer = Ed25519PrivateKey.generate()
             runtime.operator = {"enabled": True, "permitPublicKey": b64(signer.public_key().public_bytes(
                 serialization.Encoding.Raw, serialization.PublicFormat.Raw))}
-            grant = issue({"audience": "openplaid-challenge-v1", "attempt": "attempt-1",
+            grant = issue({"audience": "peer-link-challenge-v1", "attempt": "attempt-1",
                 "bindingDigest": "a" * 64, "policyDigest": runtime.policy_digest,
                 "enclaveKeyDigest": hashlib.sha256(runtime.channel.public_key_der).hexdigest(),
                 "expiresAt": int(time.time()) + 60}, Ed25519PrivateKey.generate())
@@ -90,7 +90,8 @@ class RuntimeTests(unittest.TestCase):
     def test_readiness_refuses_current_unreleased_system(self):
         status = inspect()
         self.assertFalse(status["readyForSecrets"])
-        self.assertIn("liveRuntimeIntegrated", status["blockers"])
+        self.assertIn("ownerClientValidated", status["blockers"])
+        self.assertIn("hardwareEndToEndVerified", status["blockers"])
         self.assertFalse(status["automaticPayout"])
 
     def test_json_numeric_overflow_and_utf8_byte_limit(self):

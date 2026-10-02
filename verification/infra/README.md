@@ -1,13 +1,13 @@
 # Isolated Nitro pilot runbook
 
-Owner: OpenPlaid. Environment: pilot. Scope: a new tagged Nitro build/test host only.
+Owner: Peer Link. Environment: pilot. Scope: a new tagged Nitro build/test host only.
 The deployer must supply and verify its AWS account, profile, region, VPC and subnet.
 Never reuse an existing payment attestor, its keys, or its bank sessions.
 
 Before provisioning:
 
 1. Record caller identity, region, exact source commit and local tests. Confirm no
-   existing OpenPlaid pilot is running. Verify the subnet belongs to the specified VPC.
+   existing Peer Link pilot is running. Verify the subnet belongs to the specified VPC.
 2. Estimate c6i.xlarge instance, 24 GB gp3 volume, public IPv4 and transfer charges.
    Reserve a conservative upper bound in `verification.cli reserve-expense` within
    the task's $50 cap. AWS credits do not increase the authorized spending limit.
@@ -44,9 +44,11 @@ owning CloudFormation stack, verify the instance is terminated and its volume de
 Preserve public build evidence and private cost accounting. Never delete unrelated
 instances, roles, images, log groups or keys by a name-prefix guess.
 
-## Bank egress relay (not yet hardware validated)
+## Bank egress relay
 
-After source-policy approval, install the same reviewed source policy on the parent
+The October 2 synthetic hardware test exercised this relay with TLS terminating
+inside Nitro. It did not approve a live bank source policy. After source-policy
+approval, install the same reviewed source policy on the parent
 and in the measured enclave image. Run `python -m verification.relay --enclave-cid
 <verified-cid>` on the parent using the actual enclave CID from the current launch.
 The relay binds vsock port 5001, checks the peer CID and has no TCP listener. Do not
@@ -113,3 +115,60 @@ with `(umask 022; tar --no-same-permissions --no-same-owner -xzf source.tar.gz
 --strip-components=1 -C source)` restored checkout-equivalent `644/755` modes and
 produced the exact CI-normalized EIF hash. Never accept a new hash merely because
 a build used a different extraction method.
+
+
+## Fixed manual controller
+
+Generate a reviewable CloudFormation template with
+`python -m verification.infra.manual_template > manual.cfn.json`. Its required
+inputs name the dedicated VPC/subnet, a private versioned worker bundle, the
+bundle SHA-256 and an independently approved release digest. Deploy with
+`DispatchEnabled=false`. The bundle is operator-built and contains the reviewed
+EIF, parent relay and pinned dependencies; never build it from a contributor PR
+in a privileged job. The current synthetic pilot's image filename is
+`synthetic.eif`; this template is not an approved bank release.
+
+The worker role can read only that S3 object version and open SSM transport. It
+cannot read Parameter Store or Secrets Manager, use KMS, assume roles or access
+other artifacts. User data verifies the bundle digest before extraction, starts
+one enclave without debug mode and binds its opaque gateway to localhost. There
+are no inbound security-group rules. Public IPv4 plus outbound TLS avoids a NAT
+gateway; the enclave's bank allowlist is narrower than the host's egress policy.
+
+The operator seeds the single DynamoDB `budget` row with `committedMicroUsd`
+including **all earlier task reservations** and `paused: true`. Creation must use
+`attribute_not_exists(id)`. Never reset this row to recover from an error or stack
+redeploy. Ledger resources have retention policies. A separately reviewed
+approval row `approval/<32-hex-id>` contains `state: approved`, `releaseDigest`,
+`artifactDigest` and an unexpired integer `expiresAt`. No credentials go in rows.
+
+After the trusted deployment and GitHub protection gates pass, the operator can
+unpause the ledger and enable dispatch. One transaction reserves $2, acquires the
+sole active lease and consumes an exact approval. Only the immutable launch
+template version supplies deployment settings; request fields cannot override
+an AMI, role, network, user data or instance count. A launch failure burns the
+reservation and keeps its lease until the external reconciler establishes that
+no worker remains. Never retry an uncertain launch automatically.
+
+The expiry Lambda runs every five minutes, terminates only this stack's tagged
+workers older than 110 minutes or in stopping/stopped state, and clears a lease
+only after termination is observed. A host shutdown timer is an additional guard.
+CloudWatch tracks expiry errors; connect and test a notification route before
+unattended use. The current pilot has operator supervision, not unattended alerts.
+
+The checked-in manual GitHub workflow is disabled by default. Before activation,
+verify protected main and CODEOWNERS review, required CI, environment reviewers,
+prevent-self-review, main-only environment deployment rules and restricted
+repository/environment variable administration. Publish a reviewed controller
+Lambda **version**. An OIDC role must trust only the exact repository/environment
+and allow only `lambda:InvokeFunction` on that version ARN. It must have no
+`PassRole`, deployment, SSM, secret or bank-data permissions. Record the live
+protection responses; merely adding CODEOWNERS or YAML is not enforcement.
+
+Cleanup: pause the budget and disable dispatch first; let the owning reaper
+terminate the exact test worker, verify its disk deletion and lease clearance,
+then remove the test stack. Export audit rows before disposing of an explicitly
+disposable synthetic ledger. An artifact stack with `DeletionPolicy: Retain`
+requires separate cleanup of its exact owned object versions and bucket; do not
+leave it behind assuming stack deletion removes it. Keep the task-wide cost
+reservation until billing reconciliation. Never delete by broad name prefix.

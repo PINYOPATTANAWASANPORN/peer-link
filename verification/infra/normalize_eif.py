@@ -38,10 +38,10 @@ def metadata(payload, revision):
         raise ValueError('eif_build_metadata_schema')
     # Keep tool/OS/kernel labels. Volatile timestamps, Docker layer IDs, host paths
     # and tags are deliberately excluded; executable configuration lives in payloads.
-    value = {'ImageName': 'openplaid', 'ImageVersion': revision,
+    value = {'ImageName': 'peer-link', 'ImageVersion': revision,
         'BuildMetadata': {**build, 'BuildTime': '1970-01-01T00:00:00+00:00'},
         'DockerInfo': {}, 'CustomMetadata': {'sourceCommit': revision,
-            'normalization': 'openplaid-unsigned-eif-v1'}}
+            'normalization': 'peer-link-unsigned-eif-v1'}}
     return json.dumps(value, sort_keys=True, separators=(',', ':'), ensure_ascii=True).encode()
 
 
