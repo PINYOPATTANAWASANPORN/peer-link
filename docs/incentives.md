@@ -26,7 +26,7 @@ issue. The infrastructure budget for the verifier is separate.
 | Bank of America | [#74](https://github.com/zkp2p/peer-link/issues/74) | USD | $50 |
 | Wells Fargo | [#75](https://github.com/zkp2p/peer-link/issues/75) | USD | $50 |
 | OPay | [#4](https://github.com/zkp2p/peer-link/issues/4) | NGN | $50 |
-| Easypaisa | [#5](https://github.com/zkp2p/peer-link/issues/5) | PKR | $50 |
+| Easypaisa | [#86](https://github.com/zkp2p/peer-link/issues/86) | PKR | $50 |
 | BCA | [#7](https://github.com/zkp2p/peer-link/issues/7) | IDR | $50 |
 | Bancolombia | [#9](https://github.com/zkp2p/peer-link/issues/9) | COP | $50 |
 | GCash | [#10](https://github.com/zkp2p/peer-link/issues/10) | PHP | $50 |
@@ -61,6 +61,10 @@ feasibility scopes were upgraded the same day to full $50 adapter awards.
 3. Build with your agent using [the contribution skill](../skills/contribute-bank/SKILL.md).
    Open a PR that says `Closes #<issue>`. Submissions are due
    **2026-11-15 23:59 UTC**.
+
+Maintainers track each bounty with the `bounty: assigned`, `bounty: in review` and
+`bounty: accepted` labels. Keep the `Merit` and `$50` labels only on funded bank
+issues; Merit lists every open issue that carries both.
 
 ## Acceptance
 
