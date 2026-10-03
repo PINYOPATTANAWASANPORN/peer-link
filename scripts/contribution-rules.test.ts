@@ -236,19 +236,73 @@ describe("repository validation", () => {
     "banks/us/mercury/transformer.test.ts": 'import { interpretMercury } from "./transformer.js";',
     "banks/us/mercury/fixtures/sent.synthetic.json": JSON.stringify(mercuryFixture),
   };
-  const run = (files: Record<string, string>) =>
+  const run = (
+    files: Record<string, string>,
+    matches: boolean | ((sha: string) => boolean) = true,
+  ) =>
     validateRepository({
       files: Object.keys(files),
       read: (file) => files[file],
       exists: () => true,
       revision: () => "ok",
+      adapterMatchesRevision: (sha) => (typeof matches === "function" ? matches(sha) : matches),
       now: Date.now(),
     });
   it("accepts a complete adapter", () =>
     expect(run(base)).toEqual({
       errors: [],
+      warnings: [expect.stringContaining("no live report")],
       counts: { adapters: 1, fixtures: 1, reports: 0 },
     }));
+  it("keeps missing, fixture-only and historical live evidence advisory", () => {
+    const file = "banks/us/mercury/reports/2026-09-23-0xsachink.json";
+    const report = readFileSync(file, "utf8");
+    const current = run({ ...base, [file]: report });
+    expect(current.errors).toEqual([]);
+    expect(current.warnings).toEqual([]);
+    const stale = run({ ...base, [file]: report }, false);
+    expect(stale.errors).toEqual([]);
+    expect(stale.warnings.join("\n")).toContain("historical report does not cover");
+    expect(stale.warnings.join("\n")).toContain("no pass or partial live report covers");
+    const fixtureOnly = run({
+      ...base,
+      [file]: report.replace("contributor-live", "fixture-only"),
+    });
+    expect(fixtureOnly.errors).toEqual([]);
+    expect(fixtureOnly.warnings.join("\n")).toContain("no live report");
+  });
+  it.each(["fail", "blocked", "not-tested"])(
+    "keeps an advisory gap for a current live report with outcome %s",
+    (outcome) => {
+      const file = "banks/us/mercury/reports/2026-09-23-0xsachink.json";
+      const report = { ...JSON.parse(readFileSync(file, "utf8")), outcome };
+      const result = run({ ...base, [file]: JSON.stringify(report) });
+      expect(result.errors).toEqual([]);
+      expect(result.warnings).toEqual([
+        expect.stringContaining("no pass or partial live report covers"),
+      ]);
+    },
+  );
+  it.each(["pass", "partial"])(
+    "avoids stale-report noise when a current %s report exists",
+    (outcome) => {
+      const file = "banks/us/mercury/reports/2026-09-23-0xsachink.json";
+      const oldReport = JSON.parse(readFileSync(file, "utf8"));
+      const revision = "a".repeat(40);
+      const currentReport = { ...oldReport, adapterRevision: revision, outcome };
+      const result = run(
+        {
+          ...base,
+          [file]: JSON.stringify(oldReport),
+          [file.replace(".json", "-current.json")]: JSON.stringify(currentReport),
+        },
+        (sha) => sha === revision,
+      );
+      expect(result.errors).toEqual([]);
+      expect(result.warnings).toEqual([]);
+      expect(result.counts.reports).toBe(2);
+    },
+  );
   it("requires each adapter component", () => {
     const errors = run({
       "banks/us/mercury/manifest.json": base["banks/us/mercury/manifest.json"],

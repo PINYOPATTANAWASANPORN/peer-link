@@ -1,5 +1,6 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, statSync } from "node:fs";
+import { checkRepositoryLayout, classifyBankPath } from "./contribution-rules";
 import { MAX_SCAN_BYTES, scanFile } from "./privacy-rules";
 
 /**
@@ -42,7 +43,7 @@ if (range) {
   let commits: string[] = [];
   try {
     commits = list(
-      execFileSync("git", ["rev-list", "--no-merges", range], {
+      execFileSync("git", ["rev-list", range], {
         encoding: "utf8",
         stdio: ["ignore", "pipe", "ignore"],
       }).replaceAll("\n", "\0"),
@@ -57,6 +58,9 @@ if (range) {
         "--no-commit-id",
         "-r",
         "--root",
+        // For merges, scan resolutions changed from all parents. Ordinary parent
+        // commits are scanned separately; don't re-scan unchanged upstream history.
+        "-c",
         "--name-only",
         "--diff-filter=ACMR",
         "-z",
@@ -87,6 +91,13 @@ if (range) {
 const findings: string[] = [];
 const warnings: string[] = [];
 for (const target of targets) {
+  if (range) {
+    const bankPath = classifyBankPath(target.file);
+    if (checkRepositoryLayout([target.file]).length || (bankPath && "error" in bankPath))
+      warnings.push(
+        `${target.label}: historical file outside the current repository layout; inspect it locally for captures or personal data even if it was later deleted`,
+      );
+  }
   const { content, size } = target.load();
   const result = scanFile(target.file, content, size);
   const relabel = (line: string) => line.replace(target.file, target.label);
