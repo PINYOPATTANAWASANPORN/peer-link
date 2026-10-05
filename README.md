@@ -6,7 +6,7 @@ An MIT-licensed library of bank adapters, payment semantics, privacy-safe fixtur
 
 [Website](https://link.peer.xyz) · [Contribute](CONTRIBUTING.md) · [Integrations](https://link.peer.xyz/#providers) · [Incentives](docs/incentives.md)
 
-**$1,500 in bounties** is funded on [Merit](https://terminal.merit.systems/zkp2p/peer-link) for 30 banks, $50 each, paid in USDC. Pick a bank from the [bounty index](https://github.com/zkp2p/peer-link/issues/64), get assigned on its issue, and follow the [terms](docs/incentives.md). Contributions for any other bank are welcome too.
+**$1,550 in bounties** is funded on [Merit](https://terminal.merit.systems/zkp2p/peer-link) for 31 integrations, $50 each, paid in USDC. Pick a bank from the [bounty index](https://github.com/zkp2p/peer-link/issues/64), get assigned on its issue, and follow the [terms](docs/incentives.md). Contributions for any other bank are welcome too.
 
 ## Start with your agent
 

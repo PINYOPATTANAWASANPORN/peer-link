@@ -298,5 +298,15 @@
     "url": "https://github.com/zkp2p/peer-link/issues/162",
     "logo": "/logos/trust.png",
     "adapter": "sg/trust"
+  },
+  {
+    "issue": 183,
+    "name": "Hong Kong FPS",
+    "country": "HK",
+    "currency": "HKD",
+    "amount": 50,
+    "url": "https://github.com/zkp2p/peer-link/issues/183",
+    "logo": "/logos/fps.svg",
+    "adapter": "hk/fps"
   }
 ]
