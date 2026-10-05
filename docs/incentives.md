@@ -1,6 +1,6 @@
 # Bounties
 
-**$1,000 is funded for 20 bank integrations, $50 each, paid in USDC through
+**$1,500 is funded for 30 bank integrations, $50 each, paid in USDC through
 [Merit](https://terminal.merit.systems/zkp2p/peer-link).** The
 [bounty index (#64)](https://github.com/zkp2p/peer-link/issues/64) is the live
 source of truth; each bank issue states its exact scope. There is no token and
@@ -15,6 +15,12 @@ sponsor's Merit account and allocated to the `zkp2p/peer-link` Merit project:
 Merit showed **$1,000 funded, $1,000 available and $0 paid out** after the
 second allocation. Awards are earmarked from that project pool, not escrowed per
 issue. The infrastructure budget for the verifier is separate.
+
+## Top-up — October 2026
+
+A further 500 USDC deposit on Base ([deposit 3](https://basescan.org/tx/DEPOSIT_TX))
+was allocated to the same Merit project to fund five China and five Singapore
+banks at $50 each, bringing the pool to **$1,500 across 30 banks**.
 
 ## Funded banks
 
@@ -40,10 +46,21 @@ issue. The infrastructure budget for the verifier is separate.
 | Itau Brazil | [#21](https://github.com/zkp2p/peer-link/issues/21) | BRL | $50 |
 | MTN MoMo Ghana | [#32](https://github.com/zkp2p/peer-link/issues/32) | GHS | $50 |
 | BBVA Spain | [#24](https://github.com/zkp2p/peer-link/issues/24) | EUR | $50 |
+| ICBC | [#153](https://github.com/zkp2p/peer-link/issues/153) | CNY | $50 |
+| China Construction Bank | [#154](https://github.com/zkp2p/peer-link/issues/154) | CNY | $50 |
+| Agricultural Bank of China | [#155](https://github.com/zkp2p/peer-link/issues/155) | CNY | $50 |
+| Bank of China | [#156](https://github.com/zkp2p/peer-link/issues/156) | CNY | $50 |
+| China Merchants Bank | [#157](https://github.com/zkp2p/peer-link/issues/157) | CNY | $50 |
+| DBS / POSB | [#158](https://github.com/zkp2p/peer-link/issues/158) | SGD | $50 |
+| OCBC | [#159](https://github.com/zkp2p/peer-link/issues/159) | SGD | $50 |
+| UOB | [#160](https://github.com/zkp2p/peer-link/issues/160) | SGD | $50 |
+| Standard Chartered Singapore | [#161](https://github.com/zkp2p/peer-link/issues/161) | SGD | $50 |
+| Trust Bank | [#162](https://github.com/zkp2p/peer-link/issues/162) | SGD | $50 |
 
 The list balances Peer's US demand with large P2P markets across Latin America,
 Africa, Asia and Europe, and only uses banks whose issues and logos already
-exist in this repository. See [integration priorities](integration-priorities.md).
+exist in this repository. The October top-up adds China's four largest state banks
+and China Merchants Bank for CNY, and five Singapore PayNow/FAST banks for SGD. See [integration priorities](integration-priorities.md).
 `app/bounties.json` mirrors this table for the website; keep both in sync with
 the GitHub `Merit` + `$50` labels, which Merit uses to list bounties.
 

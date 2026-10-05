@@ -1,6 +1,6 @@
 # Integration priorities — October 2, 2026
 
-The funded program covers 20 banks at $50 each from the $1,000 Merit project pool; each
+The funded program covers 30 banks at $50 each from the $1,500 Merit project pool; each
 bank issue states its narrow scope, folder and deadline, and
 [issue #64](https://github.com/zkp2p/peer-link/issues/64) and [incentives](incentives.md)
 hold the program terms. Chase, Bank of America and Wells Fargo were upgraded from $25
@@ -26,7 +26,7 @@ depth and ad activity, not settled volume.
 
 ## Funded banks
 
-Access signals are as of October 2, 2026; "none yet" means no comment on the issue.
+Access signals are as of October 2, 2026 (October 5 for the China and Singapore rows); "none yet" means no comment on the issue.
 
 | Bank | Issue scope (one type, pick and document) | Access signal | Main semantic risk |
 | --- | --- | --- | --- |
@@ -45,11 +45,21 @@ Access signals are as of October 2, 2026; "none yet" means no comment on the iss
 | [Kaspi Bank](https://github.com/zkp2p/peer-link/issues/15) | KZT Kaspi-to-Kaspi by phone or card | None yet | Partial recipient names as the only identifier |
 | [Ualá](https://github.com/zkp2p/peer-link/issues/20) | ARS transfer by CVU/alias | None yet | COELSA reference may be absent |
 | [OPay](https://github.com/zkp2p/peer-link/issues/4) | NGN OPay-to-OPay or OPay-to-bank | None yet | Wallet vs NIP transfers; session IDs |
-| [Easypaisa](https://github.com/zkp2p/peer-link/issues/5) | PKR wallet transfer or IBFT/Raast | None yet | Masked mobile numbers |
+| [Easypaisa](https://github.com/zkp2p/peer-link/issues/86) | PKR wallet transfer or IBFT/Raast | None yet | Masked mobile numbers |
 | [GCash](https://github.com/zkp2p/peer-link/issues/10) | PHP Send Money or InstaPay | None yet | Masked mobile numbers; reference numbers |
 | [bKash](https://github.com/zkp2p/peer-link/issues/13) | BDT Send Money | None yet | Cash Out, Payment and Recharge excluded |
 | [Safaricom M-Pesa](https://github.com/zkp2p/peer-link/issues/14) | KES Send Money | None yet | SMS provenance; Lipa na M-Pesa and Fuliza excluded |
 | [MTN MoMo Ghana](https://github.com/zkp2p/peer-link/issues/32) | GHS MoMo-to-MoMo | None yet | SMS provenance; merchant payments excluded |
+| [ICBC](https://github.com/zkp2p/peer-link/issues/153) | CNY same-bank or interbank transfer | None yet | Masked names and account numbers; interbank items can sit in processing |
+| [China Construction Bank](https://github.com/zkp2p/peer-link/issues/154) | CNY same-bank or interbank transfer | None yet | Masked names and account numbers; interbank items can sit in processing |
+| [Agricultural Bank of China](https://github.com/zkp2p/peer-link/issues/155) | CNY same-bank or interbank transfer | None yet | Masked names and account numbers; interbank items can sit in processing |
+| [Bank of China](https://github.com/zkp2p/peer-link/issues/156) | CNY same-bank or interbank transfer | None yet | Masked names and account numbers; interbank items can sit in processing |
+| [China Merchants Bank](https://github.com/zkp2p/peer-link/issues/157) | CNY same-bank or interbank transfer | None yet | Masked names and account numbers; interbank items can sit in processing |
+| [DBS / POSB](https://github.com/zkp2p/peer-link/issues/158) | SGD PayNow or FAST account transfer | None yet | DBS and POSB share digibank; PayLah! excluded |
+| [OCBC](https://github.com/zkp2p/peer-link/issues/159) | SGD PayNow or FAST account transfer | None yet | PayNow proxies and NRIC/FIN never enter fixtures; display names are not identifiers |
+| [UOB](https://github.com/zkp2p/peer-link/issues/160) | SGD PayNow or FAST account transfer | None yet | PayNow proxies and NRIC/FIN never enter fixtures; display names are not identifiers |
+| [Standard Chartered Singapore](https://github.com/zkp2p/peer-link/issues/161) | SGD PayNow or FAST account transfer | None yet | PayNow proxies and NRIC/FIN never enter fixtures; display names are not identifiers |
+| [Trust Bank](https://github.com/zkp2p/peer-link/issues/162) | SGD PayNow or FAST account transfer | None yet | App-only; agree the input format first |
 
 ## Assignment and review guidance
 

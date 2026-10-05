@@ -198,5 +198,105 @@
     "url": "https://github.com/zkp2p/peer-link/issues/24",
     "logo": "/logos/24.png",
     "adapter": "es/bbva-spain"
+  },
+  {
+    "issue": 153,
+    "name": "ICBC",
+    "country": "CN",
+    "currency": "CNY",
+    "amount": 50,
+    "url": "https://github.com/zkp2p/peer-link/issues/153",
+    "logo": "/logos/icbc.png",
+    "adapter": "cn/icbc"
+  },
+  {
+    "issue": 154,
+    "name": "China Construction Bank",
+    "country": "CN",
+    "currency": "CNY",
+    "amount": 50,
+    "url": "https://github.com/zkp2p/peer-link/issues/154",
+    "logo": "/logos/ccb.png",
+    "adapter": "cn/ccb"
+  },
+  {
+    "issue": 155,
+    "name": "Agricultural Bank of China",
+    "country": "CN",
+    "currency": "CNY",
+    "amount": 50,
+    "url": "https://github.com/zkp2p/peer-link/issues/155",
+    "logo": "/logos/abc.png",
+    "adapter": "cn/abc"
+  },
+  {
+    "issue": 156,
+    "name": "Bank of China",
+    "country": "CN",
+    "currency": "CNY",
+    "amount": 50,
+    "url": "https://github.com/zkp2p/peer-link/issues/156",
+    "logo": "/logos/boc.png",
+    "adapter": "cn/boc"
+  },
+  {
+    "issue": 157,
+    "name": "China Merchants Bank",
+    "country": "CN",
+    "currency": "CNY",
+    "amount": 50,
+    "url": "https://github.com/zkp2p/peer-link/issues/157",
+    "logo": "/logos/cmb.png",
+    "adapter": "cn/cmb"
+  },
+  {
+    "issue": 158,
+    "name": "DBS / POSB",
+    "country": "SG",
+    "currency": "SGD",
+    "amount": 50,
+    "url": "https://github.com/zkp2p/peer-link/issues/158",
+    "logo": "/logos/dbs.png",
+    "adapter": "sg/dbs"
+  },
+  {
+    "issue": 159,
+    "name": "OCBC",
+    "country": "SG",
+    "currency": "SGD",
+    "amount": 50,
+    "url": "https://github.com/zkp2p/peer-link/issues/159",
+    "logo": "/logos/ocbc.png",
+    "adapter": "sg/ocbc"
+  },
+  {
+    "issue": 160,
+    "name": "UOB",
+    "country": "SG",
+    "currency": "SGD",
+    "amount": 50,
+    "url": "https://github.com/zkp2p/peer-link/issues/160",
+    "logo": "/logos/uob.png",
+    "adapter": "sg/uob"
+  },
+  {
+    "issue": 161,
+    "name": "Standard Chartered Singapore",
+    "country": "SG",
+    "currency": "SGD",
+    "amount": 50,
+    "url": "https://github.com/zkp2p/peer-link/issues/161",
+    "logo": "/logos/standard-chartered.png",
+    "adapter": "sg/standard-chartered"
+  },
+  {
+    "issue": 162,
+    "name": "Trust Bank",
+    "country": "SG",
+    "currency": "SGD",
+    "amount": 50,
+    "url": "https://github.com/zkp2p/peer-link/issues/162",
+    "logo": "/logos/trust.png",
+    "adapter": "sg/trust"
   }
 ]
