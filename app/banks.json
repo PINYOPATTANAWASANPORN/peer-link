@@ -160,6 +160,86 @@
     "mark": "BS"
   },
   {
+    "name": "ICBC",
+    "country": "CN",
+    "currency": "CNY",
+    "issue": "https://github.com/zkp2p/peer-link/issues/153",
+    "logo": "/logos/icbc.png",
+    "mark": "IC"
+  },
+  {
+    "name": "China Construction Bank",
+    "country": "CN",
+    "currency": "CNY",
+    "issue": "https://github.com/zkp2p/peer-link/issues/154",
+    "logo": "/logos/ccb.png",
+    "mark": "CC"
+  },
+  {
+    "name": "Agricultural Bank of China",
+    "country": "CN",
+    "currency": "CNY",
+    "issue": "https://github.com/zkp2p/peer-link/issues/155",
+    "logo": "/logos/abc.png",
+    "mark": "AB"
+  },
+  {
+    "name": "Bank of China",
+    "country": "CN",
+    "currency": "CNY",
+    "issue": "https://github.com/zkp2p/peer-link/issues/156",
+    "logo": "/logos/boc.png",
+    "mark": "BC"
+  },
+  {
+    "name": "China Merchants Bank",
+    "country": "CN",
+    "currency": "CNY",
+    "issue": "https://github.com/zkp2p/peer-link/issues/157",
+    "logo": "/logos/cmb.png",
+    "mark": "CM"
+  },
+  {
+    "name": "DBS / POSB",
+    "country": "SG",
+    "currency": "SGD",
+    "issue": "https://github.com/zkp2p/peer-link/issues/158",
+    "logo": "/logos/dbs.png",
+    "mark": "D"
+  },
+  {
+    "name": "OCBC",
+    "country": "SG",
+    "currency": "SGD",
+    "issue": "https://github.com/zkp2p/peer-link/issues/159",
+    "logo": "/logos/ocbc.png",
+    "mark": "O"
+  },
+  {
+    "name": "UOB",
+    "country": "SG",
+    "currency": "SGD",
+    "issue": "https://github.com/zkp2p/peer-link/issues/160",
+    "logo": "/logos/uob.png",
+    "mark": "U"
+  },
+  {
+    "name": "Standard Chartered Singapore",
+    "country": "SG",
+    "currency": "SGD",
+    "issue": "https://github.com/zkp2p/peer-link/issues/161",
+    "logo": "/logos/standard-chartered.png",
+    "mark": "SC"
+  },
+  {
+    "name": "Trust Bank",
+    "country": "SG",
+    "currency": "SGD",
+    "issue": "https://github.com/zkp2p/peer-link/issues/162",
+    "logo": "/logos/trust.png",
+    "mark": "TB"
+  },
+  {
     "name": "ICICI Bank",
     "country": "IN",
     "currency": "INR",
