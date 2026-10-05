@@ -240,6 +240,14 @@
     "mark": "TB"
   },
   {
+    "name": "Hong Kong FPS",
+    "country": "HK",
+    "currency": "HKD",
+    "issue": "https://github.com/zkp2p/peer-link/issues/183",
+    "logo": "/logos/fps.svg",
+    "mark": "F"
+  },
+  {
     "name": "ICICI Bank",
     "country": "IN",
     "currency": "INR",

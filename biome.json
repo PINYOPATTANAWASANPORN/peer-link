@@ -41,7 +41,11 @@
   },
   "overrides": [
     {
-      "includes": ["app/public/logos/peer-logo-*.svg", "app/public/favicon.svg"],
+      "includes": [
+        "app/public/logos/peer-logo-*.svg",
+        "app/public/logos/fps.svg",
+        "app/public/favicon.svg"
+      ],
       "linter": {
         "enabled": false
       },

@@ -25,6 +25,12 @@ China and Singapore assets were retrieved unchanged on October 5, 2026. Standard
 | `standard-chartered.png` | https://www.sc.com/sg/ | https://av.sc.com/sg/content/images/content/images/cropped-cropped-favicon-cropped-512x512-1-200x200.png |
 | `trust.png` | https://trustbank.sg/ | https://trustbank.sg/images/trust_favicon.png |
 
+The Hong Kong FPS logo was retrieved unchanged on October 5, 2026 from the FPS site run by Hong Kong Interbank Clearing Limited, the system operator:
+
+| Local file | Official source | Asset URL |
+| --- | --- | --- |
+| `fps.svg` | https://fps.hkicl.com.hk/eng/fps/index.php | https://fps.hkicl.com.hk/images/fps/fps_color.svg |
+
 Other bank logos predate this source register and are preserved from the existing repository; this file does not claim to have reverified their provenance. Peer wordmarks are documented separately in [PEER-ASSETS.md](PEER-ASSETS.md).
 
 Chase serves JPEG bytes at its `.png` icon URL; the local `.jpg` extension matches the unchanged response format.
