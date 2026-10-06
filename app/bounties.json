@@ -308,5 +308,55 @@
     "url": "https://github.com/zkp2p/peer-link/issues/183",
     "logo": "/logos/fps.svg",
     "adapter": "hk/fps"
+  },
+  {
+    "issue": 185,
+    "name": "KB Kookmin Bank",
+    "country": "KR",
+    "currency": "KRW",
+    "amount": 50,
+    "url": "https://github.com/zkp2p/peer-link/issues/185",
+    "logo": "/logos/kookmin.png",
+    "adapter": "kr/kookmin"
+  },
+  {
+    "issue": 186,
+    "name": "Shinhan Bank",
+    "country": "KR",
+    "currency": "KRW",
+    "amount": 50,
+    "url": "https://github.com/zkp2p/peer-link/issues/186",
+    "logo": "/logos/shinhan.png",
+    "adapter": "kr/shinhan"
+  },
+  {
+    "issue": 187,
+    "name": "Hana Bank",
+    "country": "KR",
+    "currency": "KRW",
+    "amount": 50,
+    "url": "https://github.com/zkp2p/peer-link/issues/187",
+    "logo": "/logos/hana.png",
+    "adapter": "kr/hana"
+  },
+  {
+    "issue": 188,
+    "name": "Woori Bank",
+    "country": "KR",
+    "currency": "KRW",
+    "amount": 50,
+    "url": "https://github.com/zkp2p/peer-link/issues/188",
+    "logo": "/logos/woori.png",
+    "adapter": "kr/woori"
+  },
+  {
+    "issue": 189,
+    "name": "NH NongHyup Bank",
+    "country": "KR",
+    "currency": "KRW",
+    "amount": 50,
+    "url": "https://github.com/zkp2p/peer-link/issues/189",
+    "logo": "/logos/nonghyup.png",
+    "adapter": "kr/nonghyup"
   }
 ]

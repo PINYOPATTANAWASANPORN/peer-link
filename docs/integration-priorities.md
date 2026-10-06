@@ -1,6 +1,6 @@
 # Integration priorities — October 2, 2026
 
-The funded program covers 31 integrations at $50 each from the $1,550 Merit project pool; each
+The funded program covers 36 integrations at $50 each from the $1,800 Merit project pool; each
 bank issue states its narrow scope, folder and deadline, and
 [issue #64](https://github.com/zkp2p/peer-link/issues/64) and [incentives](incentives.md)
 hold the program terms. Chase, Bank of America and Wells Fargo were upgraded from $25
@@ -26,7 +26,7 @@ depth and ad activity, not settled volume.
 
 ## Funded banks
 
-Access signals are as of October 2, 2026 (October 5 for the China, Singapore and Hong Kong rows); "none yet" means no comment on the issue.
+Access signals are as of October 2, 2026 (October 5 for the China, Singapore and Hong Kong rows, October 6 for the Korea rows); "none yet" means no comment on the issue.
 
 | Bank | Issue scope (one type, pick and document) | Access signal | Main semantic risk |
 | --- | --- | --- | --- |
@@ -61,6 +61,11 @@ Access signals are as of October 2, 2026 (October 5 for the China, Singapore and
 | [Standard Chartered Singapore](https://github.com/zkp2p/peer-link/issues/161) | SGD PayNow or FAST account transfer | None yet | PayNow proxies and NRIC/FIN never enter fixtures; display names are not identifiers |
 | [Trust Bank](https://github.com/zkp2p/peer-link/issues/162) | SGD PayNow or FAST account transfer | None yet | App-only; agree the input format first |
 | [Hong Kong FPS](https://github.com/zkp2p/peer-link/issues/183) | HKD FPS transfer from one participant bank's app or web history (pick one) | None yet | Masked recipient names; FPS IDs, mobile numbers and emails never enter fixtures |
+| [KB Kookmin Bank](https://github.com/zkp2p/peer-link/issues/185) | KRW same-bank or interbank account transfer | None yet | Passbook display text is sender-editable; scheduled and delayed transfers must abstain |
+| [Shinhan Bank](https://github.com/zkp2p/peer-link/issues/186) | KRW same-bank or interbank account transfer | None yet | Group card, securities and insurance items share the app; passbook display text is sender-editable |
+| [Hana Bank](https://github.com/zkp2p/peer-link/issues/187) | KRW same-bank or interbank account transfer | None yet | Passbook display text is sender-editable; scheduled and delayed transfers must abstain |
+| [Woori Bank](https://github.com/zkp2p/peer-link/issues/188) | KRW same-bank or interbank account transfer | None yet | Passbook display text is sender-editable; scheduled and delayed transfers must abstain |
+| [NH NongHyup Bank](https://github.com/zkp2p/peer-link/issues/189) | KRW same-bank or interbank account transfer | None yet | Local cooperative (지역 농·축협) accounts share the NH brand and are out of scope |
 
 ## Assignment and review guidance
 
