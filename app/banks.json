@@ -248,6 +248,46 @@
     "mark": "F"
   },
   {
+    "name": "KB Kookmin Bank",
+    "country": "KR",
+    "currency": "KRW",
+    "issue": "https://github.com/zkp2p/peer-link/issues/185",
+    "logo": "/logos/kookmin.png",
+    "mark": "KB"
+  },
+  {
+    "name": "Shinhan Bank",
+    "country": "KR",
+    "currency": "KRW",
+    "issue": "https://github.com/zkp2p/peer-link/issues/186",
+    "logo": "/logos/shinhan.png",
+    "mark": "SH"
+  },
+  {
+    "name": "Hana Bank",
+    "country": "KR",
+    "currency": "KRW",
+    "issue": "https://github.com/zkp2p/peer-link/issues/187",
+    "logo": "/logos/hana.png",
+    "mark": "HB"
+  },
+  {
+    "name": "Woori Bank",
+    "country": "KR",
+    "currency": "KRW",
+    "issue": "https://github.com/zkp2p/peer-link/issues/188",
+    "logo": "/logos/woori.png",
+    "mark": "WB"
+  },
+  {
+    "name": "NH NongHyup Bank",
+    "country": "KR",
+    "currency": "KRW",
+    "issue": "https://github.com/zkp2p/peer-link/issues/189",
+    "logo": "/logos/nonghyup.png",
+    "mark": "NH"
+  },
+  {
     "name": "ICICI Bank",
     "country": "IN",
     "currency": "INR",

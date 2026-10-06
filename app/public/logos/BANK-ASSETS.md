@@ -31,6 +31,16 @@ The Hong Kong FPS logo was retrieved unchanged on October 5, 2026 from the FPS s
 | --- | --- | --- |
 | `fps.svg` | https://fps.hkicl.com.hk/eng/fps/index.php | https://fps.hkicl.com.hk/images/fps/fps_color.svg |
 
+Korean assets were retrieved on October 6, 2026. The bank homepages serve 16 to 60 px favicons, and most bank apps use app-brand icons, so each logo is the bank's official square symbol at 128 px or more. KB Kookmin Bank's comes from its own App Store listing (seller verified through the App Store lookup API) and Woori Bank's from its own site. Shinhan Bank and Hana Bank use their financial groups' symbols, which match the banks' own favicons, so those come from the group sites at a usable size. NongHyup's symbol comes from its CI download, which is a GIF; the directory accepts only PNG, SVG, JPEG and WebP, so it was converted losslessly to a pixel-identical PNG. The others are stored unchanged:
+
+| Local file | Official source | Asset URL |
+| --- | --- | --- |
+| `kookmin.png` | [KB스타뱅킹 App Store listing](https://apps.apple.com/kr/app/id373742138), seller Kookmin Bank Co., Ltd. | https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/62/d9/ce/62d9ce52-24e9-d59c-d59b-511fd1ec0026/AppIcon-0-0-1x_U007epad-0-9-0-85-220.png/128x128bb.png |
+| `shinhan.png` | https://www.shinhangroup.com/kr/main (Shinhan Financial Group) | https://www.shinhangroup.com/resources/publish/kr/images/common/favicon_192_192.png |
+| `hana.png` | https://www.hanafn.com/ (Hana Financial Group) | https://www.hanafn.com/assets/img/favicon/apple-touch-icon.png |
+| `woori.png` | https://spot.wooribank.com/pot/Dream?withyou=BPBKI0056 | https://simg.wooribank.com/img/section/nbp/icons/apple-touch-icon.png |
+| `nonghyup.png` | https://www.nonghyup.com/introduce/ci/symbol.do | `cyber_symbol.gif` in https://www.nonghyup.com/cmm/file/resourceDownLoad.do?filepath=ai02.zip |
+
 Other bank logos predate this source register and are preserved from the existing repository; this file does not claim to have reverified their provenance. Peer wordmarks are documented separately in [PEER-ASSETS.md](PEER-ASSETS.md).
 
 Chase serves JPEG bytes at its `.png` icon URL; the local `.jpg` extension matches the unchanged response format.
