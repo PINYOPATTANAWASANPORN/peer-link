@@ -288,6 +288,22 @@
     "mark": "NH"
   },
   {
+    "name": "BIDV",
+    "country": "VN",
+    "currency": "VND",
+    "issue": "https://github.com/zkp2p/peer-link/issues/192",
+    "logo": "/logos/bidv.png",
+    "mark": "B"
+  },
+  {
+    "name": "VietinBank",
+    "country": "VN",
+    "currency": "VND",
+    "issue": "https://github.com/zkp2p/peer-link/issues/193",
+    "logo": "/logos/vietinbank.png",
+    "mark": "VT"
+  },
+  {
     "name": "ICICI Bank",
     "country": "IN",
     "currency": "INR",
@@ -566,14 +582,6 @@
     "issue": "https://github.com/zkp2p/peer-link/issues/55",
     "logo": "/logos/mandiri.png",
     "mark": "BM"
-  },
-  {
-    "name": "BIDV",
-    "country": "VN",
-    "currency": "VND",
-    "issue": "https://github.com/zkp2p/peer-link/issues/56",
-    "logo": "/logos/bidv.png",
-    "mark": "B"
   },
   {
     "name": "Nequi",

@@ -41,6 +41,12 @@ Korean assets were retrieved on October 6, 2026. The bank homepages serve 16 to 
 | `woori.png` | https://spot.wooribank.com/pot/Dream?withyou=BPBKI0056 | https://simg.wooribank.com/img/section/nbp/icons/apple-touch-icon.png |
 | `nonghyup.png` | https://www.nonghyup.com/introduce/ci/symbol.do | `cyber_symbol.gif` in https://www.nonghyup.com/cmm/file/resourceDownLoad.do?filepath=ai02.zip |
 
+The VietinBank logo was retrieved unchanged on October 7, 2026 from the icon link on its official homepage. The site serves these 115 × 115 PNG bytes as `image/x-icon`; the local `.png` extension matches the bytes:
+
+| Local file | Official homepage | Asset URL |
+| --- | --- | --- |
+| `vietinbank.png` | https://www.vietinbank.vn/ | https://vietinbank.vn/assets/4ed6cd47-8286-40df-b66f-4ccb71e09b4b |
+
 Other bank logos predate this source register and are preserved from the existing repository; this file does not claim to have reverified their provenance. Peer wordmarks are documented separately in [PEER-ASSETS.md](PEER-ASSETS.md).
 
 Chase serves JPEG bytes at its `.png` icon URL; the local `.jpg` extension matches the unchanged response format.
