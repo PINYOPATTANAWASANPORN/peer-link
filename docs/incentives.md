@@ -1,6 +1,6 @@
 # Bounties
 
-**$1,800 is funded for 36 integrations, $50 each, paid in USDC through
+**$1,900 is funded for 38 integrations, $50 each, paid in USDC through
 [Merit](https://terminal.merit.systems/zkp2p/peer-link).** The
 [bounty index (#64)](https://github.com/zkp2p/peer-link/issues/64) is the live
 source of truth; each bank issue states its exact scope. There is no token and
@@ -18,9 +18,9 @@ issue. The infrastructure budget for the verifier is separate.
 
 ## Top-up — October 2026
 
-A further 800 USDC deposit on Base ([deposit 3](https://basescan.org/tx/DEPOSIT_TX))
+A further 900 USDC deposit on Base ([deposit 3](https://basescan.org/tx/DEPOSIT_TX))
 was allocated to the same Merit project to fund five banks each in China, Singapore and Korea,
-plus Hong Kong FPS, at $50 each, bringing the pool to **$1,800 across 36 integrations**.
+plus Hong Kong FPS, BIDV and VietinBank, at $50 each, bringing the pool to **$1,900 across 38 integrations**.
 
 ## Funded banks
 
@@ -62,11 +62,13 @@ plus Hong Kong FPS, at $50 each, bringing the pool to **$1,800 across 36 integra
 | Hana Bank | [#187](https://github.com/zkp2p/peer-link/issues/187) | KRW | $50 |
 | Woori Bank | [#188](https://github.com/zkp2p/peer-link/issues/188) | KRW | $50 |
 | NH NongHyup Bank | [#189](https://github.com/zkp2p/peer-link/issues/189) | KRW | $50 |
+| BIDV | [#192](https://github.com/zkp2p/peer-link/issues/192) | VND | $50 |
+| VietinBank | [#193](https://github.com/zkp2p/peer-link/issues/193) | VND | $50 |
 
 The list balances Peer's US demand with large P2P markets across Latin America,
 Africa, Asia and Europe, and only uses banks whose issues and logos already
 exist in this repository. The October top-up adds China's four largest state banks
-and China Merchants Bank for CNY, five Singapore PayNow/FAST banks for SGD, Hong Kong FPS for HKD, and Korea's five major banks for KRW. See [integration priorities](integration-priorities.md).
+and China Merchants Bank for CNY, five Singapore PayNow/FAST banks for SGD, Hong Kong FPS for HKD, Korea's five major banks for KRW, and BIDV and VietinBank, which join Vietcombank as Vietnam's three largest joint-stock banks, for VND. See [integration priorities](integration-priorities.md).
 `app/bounties.json` mirrors this table for the website; keep both in sync with
 the GitHub `Merit` + `$50` labels, which Merit uses to list bounties.
 

@@ -1,6 +1,6 @@
 # Integration priorities — October 2, 2026
 
-The funded program covers 36 integrations at $50 each from the $1,800 Merit project pool; each
+The funded program covers 38 integrations at $50 each from the $1,900 Merit project pool; each
 bank issue states its narrow scope, folder and deadline, and
 [issue #64](https://github.com/zkp2p/peer-link/issues/64) and [incentives](incentives.md)
 hold the program terms. Chase, Bank of America and Wells Fargo were upgraded from $25
@@ -26,7 +26,7 @@ depth and ad activity, not settled volume.
 
 ## Funded banks
 
-Access signals are as of October 2, 2026 (October 5 for the China, Singapore and Hong Kong rows, October 6 for the Korea rows); "none yet" means no comment on the issue.
+Access signals are as of October 2, 2026 (October 5 for the China, Singapore and Hong Kong rows, October 6 for the Korea rows, October 7 for the Vietnam rows); "none yet" means no comment on the issue.
 
 | Bank | Issue scope (one type, pick and document) | Access signal | Main semantic risk |
 | --- | --- | --- | --- |
@@ -66,6 +66,8 @@ Access signals are as of October 2, 2026 (October 5 for the China, Singapore and
 | [Hana Bank](https://github.com/zkp2p/peer-link/issues/187) | KRW same-bank or interbank account transfer | None yet | Passbook display text is sender-editable; scheduled and delayed transfers must abstain |
 | [Woori Bank](https://github.com/zkp2p/peer-link/issues/188) | KRW same-bank or interbank account transfer | None yet | Passbook display text is sender-editable; scheduled and delayed transfers must abstain |
 | [NH NongHyup Bank](https://github.com/zkp2p/peer-link/issues/189) | KRW same-bank or interbank account transfer | None yet | Local cooperative (지역 농·축협) accounts share the NH brand and are out of scope |
+| [BIDV](https://github.com/zkp2p/peer-link/issues/192) | VND same-bank or NAPAS 24/7 account transfer | None yet | Thousands separator follows the app language; the transfer description is sender-editable |
+| [VietinBank](https://github.com/zkp2p/peer-link/issues/193) | VND same-bank or NAPAS 24/7 account transfer | None yet | Beneficiary names often lose diacritics; processing and reversed transfers must abstain |
 
 ## Assignment and review guidance
 

@@ -358,5 +358,25 @@
     "url": "https://github.com/zkp2p/peer-link/issues/189",
     "logo": "/logos/nonghyup.png",
     "adapter": "kr/nonghyup"
+  },
+  {
+    "issue": 192,
+    "name": "BIDV",
+    "country": "VN",
+    "currency": "VND",
+    "amount": 50,
+    "url": "https://github.com/zkp2p/peer-link/issues/192",
+    "logo": "/logos/bidv.png",
+    "adapter": "vn/bidv"
+  },
+  {
+    "issue": 193,
+    "name": "VietinBank",
+    "country": "VN",
+    "currency": "VND",
+    "amount": 50,
+    "url": "https://github.com/zkp2p/peer-link/issues/193",
+    "logo": "/logos/vietinbank.png",
+    "adapter": "vn/vietinbank"
   }
 ]
