@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1",
+  "id": "vn/bidv",
+  "name": "BIDV",
+  "country": "VN",
+  "status": "experimental",
+  "version": "0.1.0",
+  "surface": "mobile-app-transaction-history",
+  "capability": "Interpret completed outgoing domestic VND BIDV account and Napas 247 transfers as sender-bank-reported sent payments",
+  "entrypoint": "interpretBIDV",
+  "maintainers": [
+    "PINYOPATTANAWASANPORN"
+  ],
+  "currencies": [
+    "VND"
+  ],
+  "unsupported": [
+    "scheduled transfers",
+    "recurring payments",
+    "bill payments",
+    "QR merchant payments",
+    "international remittances",
+    "incoming transfers",
+    "recipient-credit confirmation",
+    "cryptographic source authentication"
+  ],
+  "fixtureProvenance": "synthetic"
+}

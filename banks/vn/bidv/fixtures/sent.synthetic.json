@@ -1,0 +1,45 @@
+{
+  "provenance": "synthetic",
+  "description": "Invented identifiers, amount and date; minimal shape based on the BIDV transaction history surface. Not a real payment.",
+  "input": {
+    "data": {
+      "transactions": [
+        {
+          "id": "vn-bidv-tx-001",
+          "accountId": "vn-acc-1020304050",
+          "amount": -500000,
+          "currency": "VND",
+          "status": "SUCCESS",
+          "pending": false,
+          "holds": [],
+          "disputed": false,
+          "postedAt": "2026-10-07T08:30:00.000Z",
+          "description": "Chuyen tien toi 19034567890",
+          "details": {
+            "kind": "napas247Transfer",
+            "recipientAccount": "19034567890",
+            "recipientBankCode": "970415"
+          }
+        }
+      ],
+      "accounts": [
+        {
+          "id": "vn-acc-1020304050",
+          "type": "checking",
+          "nickname": "T\u00e0i kho\u1ea3n thanh to\u00e1n"
+        }
+      ]
+    },
+    "hasMore": false
+  },
+  "transactionId": "vn-bidv-tx-001",
+  "expected": {
+    "outcome": "supported",
+    "amountMinor": "500000",
+    "currency": "VND",
+    "status": "sent",
+    "payerId": "vn-acc-1020304050",
+    "payeeId": "970415:19034567890",
+    "timestamp": "2026-10-07T08:30:00.000Z"
+  }
+}
