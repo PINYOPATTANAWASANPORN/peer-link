@@ -1,0 +1,45 @@
+{
+  "provenance": "synthetic",
+  "description": "Invented identifiers, amount and date; minimal shape based on the Woori Bank transaction history surface. Not a real payment.",
+  "input": {
+    "data": {
+      "transactions": [
+        {
+          "id": "kr-woori-tx-001",
+          "accountId": "kr-acc-020-987654",
+          "amount": -100000,
+          "currency": "KRW",
+          "status": "SUCCESS",
+          "pending": false,
+          "holds": [],
+          "disputed": false,
+          "postedAt": "2026-10-07T03:00:00.000Z",
+          "description": "\uacc4\uc88c\uc774\uccb4 004-123456-78",
+          "details": {
+            "kind": "outgoingTransfer",
+            "recipientAccount": "004-123456-78",
+            "recipientBankCode": "004"
+          }
+        }
+      ],
+      "accounts": [
+        {
+          "id": "kr-acc-020-987654",
+          "type": "deposit",
+          "nickname": "\ubcf4\ud1b5\uc608\uae08"
+        }
+      ]
+    },
+    "hasMore": false
+  },
+  "transactionId": "kr-woori-tx-001",
+  "expected": {
+    "outcome": "supported",
+    "amountMinor": "100000",
+    "currency": "KRW",
+    "status": "sent",
+    "payerId": "kr-acc-020-987654",
+    "payeeId": "004:004-123456-78",
+    "timestamp": "2026-10-07T03:00:00.000Z"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1",
+  "id": "kr/woori",
+  "name": "Woori Bank",
+  "country": "KR",
+  "status": "experimental",
+  "version": "0.1.0",
+  "surface": "mobile-app-transaction-history",
+  "capability": "Interpret completed outgoing domestic KRW Woori Bank account transfers as sender-bank-reported sent payments",
+  "entrypoint": "interpretWoori",
+  "maintainers": [
+    "PINYOPATTANAWASANPORN"
+  ],
+  "currencies": [
+    "KRW"
+  ],
+  "unsupported": [
+    "scheduled transfers",
+    "delayed transfers",
+    "open banking transfers",
+    "foreign currency transfers",
+    "card payments",
+    "incoming transfers",
+    "recipient-credit confirmation",
+    "cryptographic source authentication"
+  ],
+  "fixtureProvenance": "synthetic"
+}
