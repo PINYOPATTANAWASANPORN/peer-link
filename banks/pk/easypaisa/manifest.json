@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1",
+  "id": "pk/easypaisa",
+  "name": "Easypaisa",
+  "country": "PK",
+  "status": "experimental",
+  "version": "0.1.0",
+  "surface": "mobile-app-transaction-history",
+  "capability": "Interpret outgoing domestic PKR Easypaisa money transfers as sender-bank-reported sent payments",
+  "entrypoint": "interpretEasypaisa",
+  "maintainers": [
+    "PINYOPATTANAWASANPORN"
+  ],
+  "currencies": [
+    "PKR"
+  ],
+  "unsupported": [
+    "utility bills",
+    "easyload mobile recharge",
+    "cash in / agent deposits",
+    "incoming transfers",
+    "international remittances",
+    "recipient-credit confirmation",
+    "cryptographic source authentication"
+  ],
+  "fixtureProvenance": "synthetic",
+  "logo": "/logos/easypaisa.png"
+}

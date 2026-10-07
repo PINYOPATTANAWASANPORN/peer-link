@@ -1,0 +1,44 @@
+{
+  "provenance": "synthetic",
+  "description": "Invented identifiers, amount and date; minimal shape based on the Easypaisa transaction history surface. Not a real payment.",
+  "input": {
+    "data": {
+      "transactions": [
+        {
+          "id": "ep-tx-001-moneytransfer",
+          "accountId": "ep-wallet-03001234567",
+          "amount": -2500.0,
+          "currency": "PKR",
+          "status": "completed",
+          "pending": false,
+          "holds": [],
+          "disputed": false,
+          "postedAt": "2026-10-05T11:20:00.000Z",
+          "description": "Money Transfer to +923019876543",
+          "details": {
+            "kind": "outgoingMoneyTransfer",
+            "recipientMobile": "+923019876543"
+          }
+        }
+      ],
+      "accounts": [
+        {
+          "id": "ep-wallet-03001234567",
+          "type": "wallet",
+          "nickname": "My Easypaisa Account"
+        }
+      ]
+    },
+    "hasMore": false
+  },
+  "transactionId": "ep-tx-001-moneytransfer",
+  "expected": {
+    "outcome": "supported",
+    "amountMinor": "250000",
+    "currency": "PKR",
+    "status": "sent",
+    "payerId": "ep-wallet-03001234567",
+    "payeeId": "+923019876543",
+    "timestamp": "2026-10-05T11:20:00.000Z"
+  }
+}
