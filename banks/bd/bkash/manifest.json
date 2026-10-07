@@ -1,0 +1,21 @@
+{
+  "country": "BD",
+  "bank": "bkash",
+  "name": "bKash",
+  "entrypoint": "interpretBKash",
+  "currencies": [
+    "BDT"
+  ],
+  "currencyExponent": 2,
+  "category": "mobile-wallet",
+  "paymentTypes": [
+    "send-money",
+    "b2b",
+    "p2p"
+  ],
+  "features": [
+    "direct-transfer",
+    "qr-transfer",
+    "app-statement"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "trxId": "BL63G9X2M1",
+  "status": "COMPLETED",
+  "amount": 2500.0,
+  "currency": "BDT",
+  "senderNumber": "01711223344",
+  "receiverNumber": "01812345678",
+  "receiverName": "Rahim Ahmed",
+  "reference": "PeerLink-Settlement-13",
+  "timestamp": "2026-10-07T14:30:00+06:00"
+}
