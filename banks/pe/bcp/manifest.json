@@ -1,0 +1,21 @@
+{
+  "country": "PE",
+  "bank": "bcp",
+  "name": "Banco de Cr\u00e9dito del Per\u00fa (BCP)",
+  "entrypoint": "interpretBCP",
+  "currencies": [
+    "PEN"
+  ],
+  "currencyExponent": 2,
+  "category": "commercial-bank",
+  "paymentTypes": [
+    "bcp-transfer",
+    "interbank-cci",
+    "p2p"
+  ],
+  "features": [
+    "banca-movil",
+    "banca-por-internet",
+    "cci-transfer"
+  ]
+}

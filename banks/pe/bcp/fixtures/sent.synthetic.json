@@ -1,0 +1,11 @@
+{
+  "numeroOperacion": "00548921",
+  "estado": "EXITOSO",
+  "monto": 450.0,
+  "moneda": "PEN",
+  "cuentaOrigen": "193-12345678-0-90",
+  "cuentaDestino": "191-98765432-0-12",
+  "nombreBeneficiario": "Carlos Mendoza",
+  "motivo": "PeerLink-BCP-17",
+  "fechaHora": "2026-10-07T11:15:00-05:00"
+}
