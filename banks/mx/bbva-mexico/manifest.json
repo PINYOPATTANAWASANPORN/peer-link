@@ -1,0 +1,21 @@
+{
+  "country": "MX",
+  "bank": "bbva-mexico",
+  "name": "BBVA M\u00e9xico",
+  "entrypoint": "interpretBBVAMexico",
+  "currencies": [
+    "MXN"
+  ],
+  "currencyExponent": 2,
+  "category": "commercial-bank",
+  "paymentTypes": [
+    "spei-transfer",
+    "bbva-transfer",
+    "p2p"
+  ],
+  "features": [
+    "bbva-movil",
+    "clave-rastreo",
+    "spei-settlement"
+  ]
+}

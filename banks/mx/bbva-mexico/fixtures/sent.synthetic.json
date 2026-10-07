@@ -1,0 +1,11 @@
+{
+  "claveRastreo": "MBAN01002304150098472839",
+  "estado": "LIQUIDADA",
+  "importe": 1500.0,
+  "moneda": "MXN",
+  "cuentaRetiro": "012180009876543210",
+  "cuentaBeneficiario": "012180012345678901",
+  "nombreBeneficiario": "Alejandro Garcia",
+  "concepto": "PeerLink-SPEI-16",
+  "fechaOperacion": "2026-10-07T12:00:00-06:00"
+}
