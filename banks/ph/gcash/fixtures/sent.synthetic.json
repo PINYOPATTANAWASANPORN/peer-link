@@ -1,0 +1,44 @@
+{
+  "provenance": "synthetic",
+  "description": "Invented identifiers, amount and date; minimal shape based on the GCash transaction history surface. Not a real payment.",
+  "input": {
+    "data": {
+      "transactions": [
+        {
+          "id": "gcash-tx-001-sendmoney",
+          "accountId": "gcash-wallet-09171234567",
+          "amount": -500.0,
+          "currency": "PHP",
+          "status": "completed",
+          "pending": false,
+          "holds": [],
+          "disputed": false,
+          "postedAt": "2026-10-05T10:15:00.000Z",
+          "description": "Express Send to +639189876543",
+          "details": {
+            "kind": "outgoingSendMoney",
+            "recipientMobile": "+639189876543"
+          }
+        }
+      ],
+      "accounts": [
+        {
+          "id": "gcash-wallet-09171234567",
+          "type": "wallet",
+          "nickname": "My GCash Wallet"
+        }
+      ]
+    },
+    "hasMore": false
+  },
+  "transactionId": "gcash-tx-001-sendmoney",
+  "expected": {
+    "outcome": "supported",
+    "amountMinor": "50000",
+    "currency": "PHP",
+    "status": "sent",
+    "payerId": "gcash-wallet-09171234567",
+    "payeeId": "+639189876543",
+    "timestamp": "2026-10-05T10:15:00.000Z"
+  }
+}

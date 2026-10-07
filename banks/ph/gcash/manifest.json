@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1",
+  "id": "ph/gcash",
+  "name": "GCash",
+  "country": "PH",
+  "status": "experimental",
+  "version": "0.1.0",
+  "surface": "mobile-app-transaction-history",
+  "capability": "Interpret outgoing domestic PHP GCash Send Money transfers as sender-bank-reported sent payments",
+  "entrypoint": "interpretGCash",
+  "maintainers": [
+    "PINYOPATTANAWASANPORN"
+  ],
+  "currencies": [
+    "PHP"
+  ],
+  "unsupported": [
+    "bills payment",
+    "QR merchant payment",
+    "cash in",
+    "incoming transfers",
+    "international remittances",
+    "recipient-credit confirmation",
+    "cryptographic source authentication"
+  ],
+  "fixtureProvenance": "synthetic",
+  "logo": "/logos/gcash.png"
+}
