@@ -1,0 +1,41 @@
+{
+  "provenance": "synthetic",
+  "description": "The same invented ACH debit while Wells Fargo still reports it as pending. Not a real payment.",
+  "input": {
+    "data": {
+      "transactions": [
+        {
+          "id": "wf-tx-001-ach",
+          "accountId": "wf-acct-98765",
+          "amount": -150.75,
+          "currency": "USD",
+          "status": "pending",
+          "pending": true,
+          "holds": [],
+          "disputed": false,
+          "postedAt": "2026-10-05T14:30:00.000Z",
+          "description": "ACH TRANSFER TO SUPPLIER",
+          "details": {
+            "kind": "outgoingDomesticACH",
+            "achRoutingInfo": {
+              "routingNumber": "121000247",
+              "accountNumber": "987654321012"
+            }
+          }
+        }
+      ],
+      "accounts": [
+        {
+          "id": "wf-acct-98765",
+          "type": "checking",
+          "nickname": "Everyday Checking"
+        }
+      ]
+    },
+    "hasMore": false
+  },
+  "transactionId": "wf-tx-001-ach",
+  "expected": {
+    "outcome": "insufficient_evidence"
+  }
+}

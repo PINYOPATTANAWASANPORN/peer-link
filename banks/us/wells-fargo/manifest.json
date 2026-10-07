@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1",
+  "id": "us/wells-fargo",
+  "name": "Wells Fargo",
+  "country": "US",
+  "status": "experimental",
+  "version": "0.1.0",
+  "surface": "web-transactions-lite",
+  "capability": "Interpret outgoing domestic USD ACH transfers as sender-bank-reported sent payments",
+  "entrypoint": "interpretWellsFargo",
+  "maintainers": [
+    "PINYOPATTANAWASANPORN"
+  ],
+  "currencies": [
+    "USD"
+  ],
+  "unsupported": [
+    "wires",
+    "cards",
+    "incoming transfers",
+    "international transfers",
+    "recipient-credit confirmation",
+    "cryptographic source authentication"
+  ],
+  "fixtureProvenance": "synthetic",
+  "logo": "/logos/wells-fargo.png"
+}
