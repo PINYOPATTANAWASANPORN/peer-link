@@ -1,0 +1,20 @@
+{
+  "transactionId": "KB-KRW-20261007-887711",
+  "input": {
+    "status": "SUCCESS",
+    "data": {
+      "transfers": [
+        {
+          "transactionId": "KB-KRW-20261007-887711",
+          "status": "COMPLETED",
+          "amount": "50000",
+          "currency": "KRW",
+          "timestamp": "2026-10-07T00:00:00.000Z",
+          "senderAccount": "004-987654-01-012",
+          "recipientAccount": "088-123456-02-034",
+          "recipientBankCode": "088"
+        }
+      ]
+    }
+  }
+}
