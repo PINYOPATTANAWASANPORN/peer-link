@@ -1,0 +1,21 @@
+{
+  "country": "AR",
+  "bank": "uala",
+  "name": "Ual\u00e1 Argentina",
+  "entrypoint": "interpretUala",
+  "currencies": [
+    "ARS"
+  ],
+  "currencyExponent": 2,
+  "category": "fintech-wallet",
+  "paymentTypes": [
+    "cvu-transfer",
+    "alias-transfer",
+    "p2p"
+  ],
+  "features": [
+    "coelsa-settlement",
+    "uala-app",
+    "alias-cvu"
+  ]
+}

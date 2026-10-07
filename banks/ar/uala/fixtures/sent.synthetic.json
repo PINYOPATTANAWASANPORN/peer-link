@@ -1,0 +1,11 @@
+{
+  "coelsaId": "COELSA-984729104829",
+  "estado": "COMPLETADA",
+  "monto": 25000.0,
+  "moneda": "ARS",
+  "cvuOrigen": "0000003100098765432109",
+  "cvuDestino": "0000003100012345678901",
+  "nombreDestinatario": "Federico Gomez",
+  "motivo": "PeerLink-Uala-20",
+  "fechaHora": "2026-10-07T15:45:00-03:00"
+}
