@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1",
+  "id": "sg/ocbc",
+  "name": "OCBC Bank Singapore",
+  "country": "SG",
+  "status": "experimental",
+  "version": "0.1.0",
+  "surface": "ocbc-online-banking",
+  "capability": "Interpret completed outgoing domestic SGD OCBC Bank Singapore account transfers as sender-bank-reported sent payments",
+  "entrypoint": "interpretOcbc",
+  "maintainers": [
+    "PINYOPATTANAWASANPORN"
+  ],
+  "currencies": [
+    "SGD"
+  ],
+  "unsupported": [
+    "scheduled transfers",
+    "pending or processing transfers",
+    "foreign currency remittances",
+    "card transactions",
+    "incoming transfers",
+    "recipient-credit confirmation",
+    "cryptographic source authentication"
+  ],
+  "fixtureProvenance": "synthetic"
+}

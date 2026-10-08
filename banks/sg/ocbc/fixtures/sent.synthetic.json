@@ -1,0 +1,20 @@
+{
+  "transactionId": "SG-OCBC-20261007-778899",
+  "input": {
+    "status": "SUCCESS",
+    "data": {
+      "transfers": [
+        {
+          "transactionId": "SG-OCBC-20261007-778899",
+          "status": "COMPLETED",
+          "amount": "250.00",
+          "currency": "SGD",
+          "timestamp": "2026-10-07T10:00:00.000Z",
+          "senderAccount": "501-123456-001",
+          "recipientAccount": "501-987654-001",
+          "recipientBankCode": "7339"
+        }
+      ]
+    }
+  }
+}
