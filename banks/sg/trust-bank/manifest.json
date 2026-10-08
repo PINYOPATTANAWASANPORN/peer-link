@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1",
+  "id": "sg/trust-bank",
+  "name": "Trust Bank Singapore",
+  "country": "SG",
+  "status": "experimental",
+  "version": "0.1.0",
+  "surface": "trust-app-transfer-history",
+  "capability": "Interpret completed outgoing domestic SGD Trust Bank Singapore account transfers as sender-bank-reported sent payments",
+  "entrypoint": "interpretTrustBankSg",
+  "maintainers": [
+    "PINYOPATTANAWASANPORN"
+  ],
+  "currencies": [
+    "SGD"
+  ],
+  "unsupported": [
+    "scheduled transfers",
+    "pending or processing transfers",
+    "foreign currency remittances",
+    "card transactions",
+    "incoming transfers",
+    "recipient-credit confirmation",
+    "cryptographic source authentication"
+  ],
+  "fixtureProvenance": "synthetic"
+}
