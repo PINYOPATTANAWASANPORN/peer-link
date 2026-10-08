@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1",
+  "id": "us/bank-of-america",
+  "name": "Bank of America",
+  "country": "US",
+  "status": "experimental",
+  "version": "0.1.0",
+  "surface": "online-banking-activity",
+  "capability": "Interpret completed outgoing domestic USD Bank of America transfers as sender-bank-reported sent payments",
+  "entrypoint": "interpretBankOfAmerica",
+  "maintainers": [
+    "PINYOPATTANAWASANPORN"
+  ],
+  "currencies": [
+    "USD"
+  ],
+  "unsupported": [
+    "scheduled transfers",
+    "pending or processing transfers",
+    "foreign currency wire remittances",
+    "card transactions",
+    "incoming transfers",
+    "recipient-credit confirmation",
+    "cryptographic source authentication"
+  ],
+  "fixtureProvenance": "synthetic"
+}
