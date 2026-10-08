@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1",
+  "id": "hk/fps",
+  "name": "Hong Kong FPS (Faster Payment System)",
+  "country": "HK",
+  "status": "experimental",
+  "version": "0.1.0",
+  "surface": "fps-transfer-detail",
+  "capability": "Interpret completed outgoing domestic HKD Hong Kong FPS (Faster Payment System) account transfers as sender-bank-reported sent payments",
+  "entrypoint": "interpretHkFps",
+  "maintainers": [
+    "PINYOPATTANAWASANPORN"
+  ],
+  "currencies": [
+    "HKD"
+  ],
+  "unsupported": [
+    "scheduled transfers",
+    "pending or processing transfers",
+    "foreign currency remittances",
+    "card transactions",
+    "incoming transfers",
+    "recipient-credit confirmation",
+    "cryptographic source authentication"
+  ],
+  "fixtureProvenance": "synthetic"
+}

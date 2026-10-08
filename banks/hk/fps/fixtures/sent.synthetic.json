@@ -1,0 +1,20 @@
+{
+  "transactionId": "HK-FPS-20261007-778899",
+  "input": {
+    "status": "SUCCESS",
+    "data": {
+      "transfers": [
+        {
+          "transactionId": "HK-FPS-20261007-778899",
+          "status": "COMPLETED",
+          "amount": "500.00",
+          "currency": "HKD",
+          "timestamp": "2026-10-07T10:00:00.000Z",
+          "senderAccount": "98765432",
+          "recipientAccount": "12345678",
+          "recipientBankCode": "FPSHK"
+        }
+      ]
+    }
+  }
+}
