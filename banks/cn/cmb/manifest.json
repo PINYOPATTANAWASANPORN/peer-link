@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1",
+  "id": "cn/cmb",
+  "name": "China Merchants Bank (\u62db\u5546\u94f6\u884c)",
+  "country": "CN",
+  "status": "experimental",
+  "version": "0.1.0",
+  "surface": "personal-internet-banking",
+  "capability": "Interpret completed outgoing domestic CNY China Merchants Bank (\u62db\u5546\u94f6\u884c) account transfers as sender-bank-reported sent payments",
+  "entrypoint": "interpretCmb",
+  "maintainers": [
+    "PINYOPATTANAWASANPORN"
+  ],
+  "currencies": [
+    "CNY"
+  ],
+  "unsupported": [
+    "scheduled transfers",
+    "pending or processing transfers",
+    "foreign currency remittances",
+    "card transactions",
+    "incoming transfers",
+    "recipient-credit confirmation",
+    "cryptographic source authentication"
+  ],
+  "fixtureProvenance": "synthetic"
+}
