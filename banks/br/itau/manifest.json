@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1",
+  "id": "br/itau",
+  "name": "Itau Unibanco Brazil",
+  "country": "BR",
+  "status": "experimental",
+  "version": "0.1.0",
+  "surface": "online-banking-pix",
+  "capability": "Interpret completed outgoing domestic BRL Itau Unibanco Brazil transfers as sender-bank-reported sent payments",
+  "entrypoint": "interpretItauBrazil",
+  "maintainers": [
+    "PINYOPATTANAWASANPORN"
+  ],
+  "currencies": [
+    "BRL"
+  ],
+  "unsupported": [
+    "scheduled transfers",
+    "pending or processing transfers",
+    "foreign currency wire remittances",
+    "card transactions",
+    "incoming transfers",
+    "recipient-credit confirmation",
+    "cryptographic source authentication"
+  ],
+  "fixtureProvenance": "synthetic"
+}

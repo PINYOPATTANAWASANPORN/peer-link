@@ -1,0 +1,20 @@
+{
+  "transactionId": "BR-ITAU-20261007-112233",
+  "input": {
+    "status": "SUCCESS",
+    "data": {
+      "transfers": [
+        {
+          "transactionId": "BR-ITAU-20261007-112233",
+          "status": "COMPLETED",
+          "amount": "500.00",
+          "currency": "BRL",
+          "timestamp": "2026-10-07T12:00:00.000Z",
+          "senderAccount": "341-12345-6",
+          "recipientAccount": "341-98765-4",
+          "recipientBankCode": "341"
+        }
+      ]
+    }
+  }
+}
