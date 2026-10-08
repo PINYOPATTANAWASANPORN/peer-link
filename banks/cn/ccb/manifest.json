@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1",
+  "id": "cn/ccb",
+  "name": "China Construction Bank",
+  "country": "CN",
+  "status": "experimental",
+  "version": "0.1.0",
+  "surface": "personal-internet-banking",
+  "capability": "Interpret completed outgoing domestic CNY China Construction Bank account transfers as sender-bank-reported sent payments",
+  "entrypoint": "interpretCcb",
+  "maintainers": [
+    "PINYOPATTANAWASANPORN"
+  ],
+  "currencies": [
+    "CNY"
+  ],
+  "unsupported": [
+    "scheduled transfers",
+    "delayed transfers",
+    "foreign currency transfers",
+    "batch corporate payroll",
+    "card payments",
+    "incoming transfers",
+    "recipient-credit confirmation",
+    "cryptographic source authentication"
+  ],
+  "fixtureProvenance": "synthetic"
+}
