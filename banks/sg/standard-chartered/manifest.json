@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1",
+  "id": "sg/standard-chartered",
+  "name": "Standard Chartered Singapore",
+  "country": "SG",
+  "status": "experimental",
+  "version": "0.1.0",
+  "surface": "sc-online-banking",
+  "capability": "Interpret completed outgoing domestic SGD Standard Chartered Singapore account transfers as sender-bank-reported sent payments",
+  "entrypoint": "interpretStandardCharteredSg",
+  "maintainers": [
+    "PINYOPATTANAWASANPORN"
+  ],
+  "currencies": [
+    "SGD"
+  ],
+  "unsupported": [
+    "scheduled transfers",
+    "pending or processing transfers",
+    "foreign currency remittances",
+    "card transactions",
+    "incoming transfers",
+    "recipient-credit confirmation",
+    "cryptographic source authentication"
+  ],
+  "fixtureProvenance": "synthetic"
+}

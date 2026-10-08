@@ -1,0 +1,20 @@
+{
+  "transactionId": "SG-STANDARD-CHARTERED-20261007-778899",
+  "input": {
+    "status": "SUCCESS",
+    "data": {
+      "transfers": [
+        {
+          "transactionId": "SG-STANDARD-CHARTERED-20261007-778899",
+          "status": "COMPLETED",
+          "amount": "150.00",
+          "currency": "SGD",
+          "timestamp": "2026-10-07T10:00:00.000Z",
+          "senderAccount": "01-012-34567",
+          "recipientAccount": "01-098-76543",
+          "recipientBankCode": "7144"
+        }
+      ]
+    }
+  }
+}
