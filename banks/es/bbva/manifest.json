@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1",
+  "id": "es/bbva",
+  "name": "BBVA Spain",
+  "country": "ES",
+  "status": "experimental",
+  "version": "0.1.0",
+  "surface": "online-banking-sepa",
+  "capability": "Interpret completed outgoing domestic EUR BBVA Spain transfers as sender-bank-reported sent payments",
+  "entrypoint": "interpretBbvaSpain",
+  "maintainers": [
+    "PINYOPATTANAWASANPORN"
+  ],
+  "currencies": [
+    "EUR"
+  ],
+  "unsupported": [
+    "scheduled transfers",
+    "pending or processing transfers",
+    "foreign currency wire remittances",
+    "card transactions",
+    "incoming transfers",
+    "recipient-credit confirmation",
+    "cryptographic source authentication"
+  ],
+  "fixtureProvenance": "synthetic"
+}

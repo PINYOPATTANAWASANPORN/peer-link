@@ -1,0 +1,20 @@
+{
+  "transactionId": "ES-BBVA-20261007-112233",
+  "input": {
+    "status": "SUCCESS",
+    "data": {
+      "transfers": [
+        {
+          "transactionId": "ES-BBVA-20261007-112233",
+          "status": "COMPLETED",
+          "amount": "150.00",
+          "currency": "EUR",
+          "timestamp": "2026-10-07T12:00:00.000Z",
+          "senderAccount": "ES9121000418450200051332",
+          "recipientAccount": "ES7601820220330201505051",
+          "recipientBankCode": "0182"
+        }
+      ]
+    }
+  }
+}
