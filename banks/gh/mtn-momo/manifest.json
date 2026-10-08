@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1",
+  "id": "gh/mtn-momo",
+  "name": "MTN Mobile Money Ghana",
+  "country": "GH",
+  "status": "experimental",
+  "version": "0.1.0",
+  "surface": "mobile-money-statement",
+  "capability": "Interpret completed outgoing domestic GHS MTN Mobile Money Ghana transfers as sender-bank-reported sent payments",
+  "entrypoint": "interpretMtnMomoGhana",
+  "maintainers": [
+    "PINYOPATTANAWASANPORN"
+  ],
+  "currencies": [
+    "GHS"
+  ],
+  "unsupported": [
+    "scheduled transfers",
+    "pending or processing transfers",
+    "foreign currency wire remittances",
+    "card transactions",
+    "incoming transfers",
+    "recipient-credit confirmation",
+    "cryptographic source authentication"
+  ],
+  "fixtureProvenance": "synthetic"
+}
