@@ -1,0 +1,20 @@
+{
+  "transactionId": "SG-DBS-20261007-778899",
+  "input": {
+    "status": "SUCCESS",
+    "data": {
+      "transfers": [
+        {
+          "transactionId": "SG-DBS-20261007-778899",
+          "status": "COMPLETED",
+          "amount": "200.00",
+          "currency": "SGD",
+          "timestamp": "2026-10-07T10:00:00.000Z",
+          "senderAccount": "012-34567-8",
+          "recipientAccount": "098-76543-2",
+          "recipientBankCode": "7171"
+        }
+      ]
+    }
+  }
+}
