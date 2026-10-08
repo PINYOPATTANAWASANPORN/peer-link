@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1",
+  "id": "sg/uob",
+  "name": "UOB Bank Singapore",
+  "country": "SG",
+  "status": "experimental",
+  "version": "0.1.0",
+  "surface": "uob-tmrw-transfer-history",
+  "capability": "Interpret completed outgoing domestic SGD UOB Bank Singapore account transfers as sender-bank-reported sent payments",
+  "entrypoint": "interpretUob",
+  "maintainers": [
+    "PINYOPATTANAWASANPORN"
+  ],
+  "currencies": [
+    "SGD"
+  ],
+  "unsupported": [
+    "scheduled transfers",
+    "pending or processing transfers",
+    "foreign currency remittances",
+    "card transactions",
+    "incoming transfers",
+    "recipient-credit confirmation",
+    "cryptographic source authentication"
+  ],
+  "fixtureProvenance": "synthetic"
+}
