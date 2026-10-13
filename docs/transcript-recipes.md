@@ -6,6 +6,10 @@ provides it, and how to describe it so the contribution is accepted. The step
 order and commands are in the
 [contribution skill](../skills/contribute-transcript/SKILL.md).
 
+HDFC's application-encrypted history read uses the dedicated `hdfc_session`
+transport in the `hdfc-open-v1` campaign. Follow the [HDFC guide and scoped
+evidence](hdfc-transcripts.md) for its matching headers/key and fixed selectors.
+
 ## What an integration needs
 
 A Peer bank integration fetches one payment from the bank inside an enclave and
