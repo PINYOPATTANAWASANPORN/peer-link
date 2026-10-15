@@ -32,7 +32,7 @@ the outside as the public job status the relay passes back, which is what the
 
 | Field | Meaning |
 | --- | --- |
-| `command` | `health`, `campaigns`, `attest`, `reserve`, `challenge`, `submit`, `status`, `receipt`, `operator`, or `unrouted` |
+| `command` | `health`, `campaigns`, `release`, `attest`, `reserve`, `challenge`, `submit`, `status`, `receipt`, `operator`, `unrouted`, or `busy` |
 | `status`, `ms`, `requestBytes`, `responseBytes` | HTTP status, time and sizes |
 | `jobId`, `campaignId` | The public random job id and the campaign |
 | `provider`, `model` | On `reserve` only: the named provider and model id the contributor chose |
@@ -42,7 +42,9 @@ the outside as the public job status the relay passes back, which is what the
 
 An `unrouted` request never reached the enclave: it is answered 404 `route_not_found`,
 or 400 with a framing code such as `input_size` or `invalid_json`. Status 503 with
-`service_unavailable` on a routed command means the enclave did not answer.
+`service_unavailable` on a routed command means the enclave did not answer. `busy`
+is the relay's own 503 when all 20 of its request slots are in use; the request was
+not read.
 
 `egress` events, one per outbound connection the enclave opens through the relay:
 `target`, `outcome` (`closed`, `idle`, `denied`, `unavailable`, `limit`, `error`),
@@ -53,9 +55,12 @@ campaign's bank domain; a contributor's own model endpoint is logged as `other`.
 continuous host: `RuntimeHealth` and `AdmissionsOpen`, each `0` or `1`, the same
 values it sends to CloudWatch. `RuntimeHealth` is `0` when the relay or enclave
 does not answer or its answer fails the policy-bound check; `AdmissionsOpen` is `0`
-while paused, including after every restore until a signed resume. A single `0`
-can be a probe that exceeded its 5 second timeout; like the CloudWatch alarm, treat
-three consecutive `0` samples as an outage. No sample for several minutes means the
+while paused, including after every restore until a signed resume, and in every
+sample whose `RuntimeHealth` is `0`. A single `0` can be a probe that exceeded its
+5 second timeout: every health answer first loads the state authority's head, so an
+authority call slower than that shows as a `lambda.<region>.amazonaws.com` egress
+with `ms` above 5000 in the same minute. Like the CloudWatch alarm, treat three
+consecutive `0` samples as an outage. No sample for several minutes means the
 host, the publisher or the log path is down.
 
 Lifecycle lines from the other units (`enclave`, `credentials`, `health`,
